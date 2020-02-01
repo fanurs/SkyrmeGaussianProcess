@@ -1,2 +1,6 @@
 # ignore all logs
 *.log
+
+# ignore directories made for personal use only; not to be shared
+Readings/
+Exploring/

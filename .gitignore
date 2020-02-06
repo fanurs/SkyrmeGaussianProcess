@@ -1,6 +1,9 @@
-# ignore all logs
+# ignore by file extensions
 *.log
+*.png
 
-# ignore directories made for personal use only; not to be shared
+# ignore by directories
+*/.ipynb_checkpoints/*
 Readings/
 Exploring/
+

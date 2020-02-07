@@ -3,6 +3,7 @@
 *.png
 
 # ignore by directories
+.ipynb_checkpoints
 */.ipynb_checkpoints/*
 Readings/
 Exploring/

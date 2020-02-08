@@ -1,6 +1,7 @@
 # ignore by file extensions
 *.log
 *.png
+*clean.sh
 
 # ignore by directories
 .ipynb_checkpoints

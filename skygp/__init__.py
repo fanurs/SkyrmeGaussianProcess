@@ -1,7 +1,9 @@
 """
 # `skygp` - Skyrme Gaussian Process
 
-Source code: https://github.com/Fanurs/SkyrmeGaussianProcess
+Source code: https://github.com/Fanurs/SkyrmeGaussianProcess/
+
+Documentation: https://fanurs.github.io/SkyrmeGaussianProcess/
 
 Developed by Chi-En Teh (Fanurs) for the class CMSE-802.
 

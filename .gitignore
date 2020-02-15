@@ -2,6 +2,7 @@
 *.log
 *.png
 *clean.sh
+run_doc.sh
 
 # ignore by directories
 .ipynb_checkpoints

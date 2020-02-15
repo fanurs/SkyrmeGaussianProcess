@@ -1,7 +1,7 @@
 # ignore by file extensions
 *.log
 *.png
-*clean.sh
+*clean_ipynb.sh
 run_doc.sh
 
 # ignore by directories

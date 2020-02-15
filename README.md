@@ -1,5 +1,7 @@
 # `skygp` - Skyrme Gaussian Process
 
+Source code: https://github.com/Fanurs/SkyrmeGaussianProcess
+
 Developed by Chi-En Teh (Fanurs) for the class CMSE-802.
 
 <p align="center">
@@ -12,7 +14,8 @@ Developed by Chi-En Teh (Fanurs) for the class CMSE-802.
 - `docs/`: Documentation of this software.
 - `tutorials/`: A collection of `.ipynb` and `.py` that demonstrate the usage of this program.
 
-## Project objective: Constraining Skyrme with Bayesian inference on heavy-ion collisions and Gaussian-emulated ImQMD
+## Physics objective
+Project title: Constraining Skyrme with Bayesian inference on heavy-ion collisions and Gaussian-emulated ImQMD
 
 ### Overview
 <p align="justify">

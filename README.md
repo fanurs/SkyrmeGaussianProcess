@@ -4,8 +4,6 @@ Source code: https://github.com/Fanurs/SkyrmeGaussianProcess/
 
 Documentation: https://fanurs.github.io/SkyrmeGaussianProcess/
 
-Tutorials:
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb)
 
 Developed by Chi-En Teh (Fanurs) for the class CMSE-802.
 
@@ -18,6 +16,9 @@ Developed by Chi-En Teh (Fanurs) for the class CMSE-802.
 - `Models/`: Weekly assignments that are due on every Friday.
 - `docs/`: Documentation of this software.
 - `tutorials/`: A collection of `.ipynb` and `.py` that demonstrate the usage of this program.
+
+## Tutorials
+- [Gaussian emulator basics](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb) or [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb)
 
 ## Physics objective
 Project title: Constraining Skyrme with Bayesian inference on heavy-ion collisions and Gaussian-emulated ImQMD

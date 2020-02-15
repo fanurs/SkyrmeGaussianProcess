@@ -4,6 +4,9 @@ Source code: https://github.com/Fanurs/SkyrmeGaussianProcess/
 
 Documentation: https://fanurs.github.io/SkyrmeGaussianProcess/
 
+Tutorials:
+- https://colab.research.google.com/github/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb
+
 Developed by Chi-En Teh (Fanurs) for the class CMSE-802.
 
 <p align="center">

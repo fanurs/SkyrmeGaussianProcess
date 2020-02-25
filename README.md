@@ -13,7 +13,7 @@ Developed by Chi-En Teh (Fanurs) for the class CMSE-802.
 
 ## What do these directories contain?
 - `skygp/`: Source codes of this sofware.
-- `Models/`: Weekly assignments that are due on every Friday.
+- `WeeklyReports/`: Weekly assignments that are due on every Friday.
 - `docs/`: Documentation of this software.
 - `tutorials/`: A collection of `.ipynb` and `.py` that demonstrate the usage of this program.
 

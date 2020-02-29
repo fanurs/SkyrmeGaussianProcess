@@ -111,11 +111,13 @@ class GaussianEmulator:
         After we have trained the `GaussianEmulator`, we may inspect the 
         training results as below:
 
-        >>> emulator = skygp.GaussianEmulator()
+        >>> import numpy as np
+        >>> emulator = GaussianEmulator()
+        >>> x_train = np.array([[0.0], [1.0]])
+        >>> y_train = np.array([[0.0], [2.0]])
         >>> emulator.fit(x_train, y_train)
-        >>> fig, ax = plt.subplots()
-        >>> emulator.inspect_training_xslice(0, ax=ax)
-        <matplotlib.axes._subplots.AxesSubplot>
+        >>> emulator.inspect_training_xslice(0) # doctest: +ELLIPSIS
+        <matplotlib.axes._subplots.AxesSubplot object at 0x...>
 
         """
         if not isinstance(ix, int):
@@ -134,7 +136,8 @@ class GaussianEmulator:
         y_pred = self.predict(x_train_sorted)
         n_outputs = y_train_sorted.shape[1]
         for i in range(n_outputs):
-            color = plt.cm.jet(1.0 * i/(n_outputs-1))
+            if n_outputs > 1: color = plt.cm.jet(1.0 * i/(n_outputs-1))
+            else: color = plt.cm.jet(1.0)
             x_slice = x_train_sorted[:, ix]
             ax.scatter(x_slice, y_train_sorted[:,i], color=color, label='y%d true' % i)
             ax.plot(x_slice, y_pred[:,i], color=color, linestyle='dashed', label='y%d pred' % i)

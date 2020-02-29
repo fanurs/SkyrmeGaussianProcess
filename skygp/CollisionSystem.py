@@ -2,8 +2,8 @@
 
 Example:
 ----------
-.. Let's try to use a literal block::
-    $ from skygp import CollisionSystem
+.. block::
+    I'm trying a literal block
 
 
 .. Section breaks are created with two blank lines.
@@ -39,8 +39,9 @@ class CollisionSystem:
         Consider a beam particle of calcium-48 hitting on target nickel-64
         with a beam energy of 140 MeV/u. This can be created by
 
-        >>> sys = CollisionSystem('ca48', 'ni64')
-        <CollisionSystem> name: ca48ni64 
+        >>> coll_sys = CollisionSystem('ca48', 'ni64', energy=140.0)
+        >>> print(coll_sys)
+        <CollisionSystem> name: ca48ni64_e140
 
         """
 
@@ -51,15 +52,17 @@ class CollisionSystem:
 
         if skyrme is not None and not isinstance(skyrme, int):
             raise TypeError('skyrme must be an integer.')
-        else:self.skyrme = skyrme
+        else: self.skyrme = skyrme
 
         if energy is not None and not isinstance(energy, float):
             raise TypeError('energy must be an integer.')
-        else:self.energy = energy
+        else: self.energy = energy
 
         if imp_param is not None and not isinstance(imp_param, float):
             raise TypeError('imp_param must be an integer.')
-        else:self.imp_param = imp_param
+        else: self.imp_param = imp_param
+
+        self.name = self.get_name(imqmd=False)
 
         return
 
@@ -72,7 +75,7 @@ class CollisionSystem:
         Parameters:
             imqmd : bool *optional*
                 If `True`, the system name will be formatted like
-                `'ca48ni64_001e%140b2x-1'`. If `False`, an ordinary readable name
+                `'ca48ni64_001e140b2x-1'`. If `False`, an ordinary readable name
                 will be coined. Default is `False`.
 
         Returns:
@@ -83,13 +86,14 @@ class CollisionSystem:
         if imqmd is not None and not isinstance(imqmd, bool):
             raise TypeError('imqmd must be a boolean.')
 
-        self.name = self.proj_symb + str(self.proj_A)
-        self.name += self.targ_symb + str(self.targ_A)
-        self.name += '_%03d' % self.skyrme if self.skyrme is not None else ''
-        self.name += 'e%d' % self.energy if self.energy is not None else ''
-        self.name += 'b%d' + self.imp_param if self.imp_param is not None else ''
-        self.name += 'x-1' if imqmd else '' # ImQMD version number (?)
-        return self.name
+        name = self.proj_symb + str(self.proj_A)
+        name += self.targ_symb + str(self.targ_A)
+        name += '_' if not (self.skyrme is None and self.energy is None and self.imp_param is None and not imqmd) else ''
+        name += '_%03d' % self.skyrme if self.skyrme is not None else ''
+        name += 'e%d' % self.energy if self.energy is not None else ''
+        name += 'b%d' + self.imp_param if self.imp_param is not None else ''
+        name += 'x-1' if imqmd else '' # ImQMD version number (?)
+        return name
 
     def __str__(self):
         return '<CollisionSystem> name: ' + self.name

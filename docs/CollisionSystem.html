@@ -23,9 +23,10 @@
 <section id="section-intro">
 <p>Collision system is a class to handle the reading and manipulation systems.
 </p>
-<h2 id="example">Example:</h2>
-<p>.. Let's try to use a literal block::
-$ from skygp import CollisionSystem</p>
+<div class="admonition block">
+<p class="admonition-title">Block</p>
+<p>I'm trying a literal block</p>
+</div>
 <p>.. Section breaks are created with two blank lines.</p>
 <details class="source">
 <summary>
@@ -35,13 +36,16 @@ $ from skygp import CollisionSystem</p>
 
 Example:
 ----------
-.. Let&#39;s try to use a literal block::
-    $ from skygp import CollisionSystem
+.. block::
+    I&#39;m trying a literal block
 
 
 .. Section breaks are created with two blank lines.
 
 &#34;&#34;&#34;
+
+import re
+
 class CollisionSystem:
     def __init__(self, proj, targ, skyrme=None, energy=None, imp_param=None):
         &#34;&#34;&#34;Initialize the collision system.
@@ -69,8 +73,9 @@ class CollisionSystem:
         Consider a beam particle of calcium-48 hitting on target nickel-64
         with a beam energy of 140 MeV/u. This can be created by
 
-        &gt;&gt;&gt; sys = CollisionSystem(&#39;ca48&#39;, &#39;ni64&#39;)
-        &lt;CollisionSystem&gt; name: ca48ni64 
+        &gt;&gt;&gt; coll_sys = CollisionSystem(&#39;ca48&#39;, &#39;ni64&#39;, energy=140.0)
+        &gt;&gt;&gt; print(coll_sys)
+        &lt;CollisionSystem&gt; name: ca48ni64_e140
 
         &#34;&#34;&#34;
 
@@ -78,9 +83,20 @@ class CollisionSystem:
         self.proj_A = int(&#39;&#39;.join(re.findall(&#39;[0-9]+&#39;, proj)))
         self.targ_symb = (&#39;&#39;.join(re.findall(&#39;[A-z]+&#39;, targ))).lower()
         self.targ_A = int(&#39;&#39;.join(re.findall(&#39;[0-9]+&#39;, targ)))
-        self.skyrme = skyrme
-        self.energy = energy
-        self.imp_param = imp_param
+
+        if skyrme is not None and not isinstance(skyrme, int):
+            raise TypeError(&#39;skyrme must be an integer.&#39;)
+        else: self.skyrme = skyrme
+
+        if energy is not None and not isinstance(energy, float):
+            raise TypeError(&#39;energy must be an integer.&#39;)
+        else: self.energy = energy
+
+        if imp_param is not None and not isinstance(imp_param, float):
+            raise TypeError(&#39;imp_param must be an integer.&#39;)
+        else: self.imp_param = imp_param
+
+        self.name = self.get_name(imqmd=False)
 
         return
 
@@ -93,7 +109,7 @@ class CollisionSystem:
         Parameters:
             imqmd : bool *optional*
                 If `True`, the system name will be formatted like
-                `&#39;ca48ni64_001e%140b2x-1&#39;`. If `False`, an ordinary readable name
+                `&#39;ca48ni64_001e140b2x-1&#39;`. If `False`, an ordinary readable name
                 will be coined. Default is `False`.
 
         Returns:
@@ -101,13 +117,17 @@ class CollisionSystem:
                 A readable name or a name formatted for ImQMD program.
 
         &#34;&#34;&#34;
-        self.name = self.proj_symb + str(self.proj_A)
-        self.name += self.targ_symb + str(self.targ_A)
-        self.name += &#39;_%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
-        self.name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
-        self.name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
-        self.name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
-        return self.name
+        if imqmd is not None and not isinstance(imqmd, bool):
+            raise TypeError(&#39;imqmd must be a boolean.&#39;)
+
+        name = self.proj_symb + str(self.proj_A)
+        name += self.targ_symb + str(self.targ_A)
+        name += &#39;_&#39; if not (self.skyrme is None and self.energy is None and self.imp_param is None and not imqmd) else &#39;&#39;
+        name += &#39;_%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
+        name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
+        name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
+        name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
+        return name
 
     def __str__(self):
         return &#39;&lt;CollisionSystem&gt; name: &#39; + self.name</code></pre>
@@ -146,8 +166,9 @@ element symbol and mass number.</dd>
 <h2 id="examples">Examples:</h2>
 <p>Consider a beam particle of calcium-48 hitting on target nickel-64
 with a beam energy of 140 MeV/u. This can be created by</p>
-<pre><code>&gt;&gt;&gt; sys = CollisionSystem('ca48', 'ni64')
-&lt;CollisionSystem&gt; name: ca48ni64
+<pre><code>&gt;&gt;&gt; coll_sys = CollisionSystem('ca48', 'ni64', energy=140.0)
+&gt;&gt;&gt; print(coll_sys)
+&lt;CollisionSystem&gt; name: ca48ni64_e140
 </code></pre></section>
 <details class="source">
 <summary>
@@ -180,8 +201,9 @@ with a beam energy of 140 MeV/u. This can be created by</p>
         Consider a beam particle of calcium-48 hitting on target nickel-64
         with a beam energy of 140 MeV/u. This can be created by
 
-        &gt;&gt;&gt; sys = CollisionSystem(&#39;ca48&#39;, &#39;ni64&#39;)
-        &lt;CollisionSystem&gt; name: ca48ni64 
+        &gt;&gt;&gt; coll_sys = CollisionSystem(&#39;ca48&#39;, &#39;ni64&#39;, energy=140.0)
+        &gt;&gt;&gt; print(coll_sys)
+        &lt;CollisionSystem&gt; name: ca48ni64_e140
 
         &#34;&#34;&#34;
 
@@ -189,9 +211,20 @@ with a beam energy of 140 MeV/u. This can be created by</p>
         self.proj_A = int(&#39;&#39;.join(re.findall(&#39;[0-9]+&#39;, proj)))
         self.targ_symb = (&#39;&#39;.join(re.findall(&#39;[A-z]+&#39;, targ))).lower()
         self.targ_A = int(&#39;&#39;.join(re.findall(&#39;[0-9]+&#39;, targ)))
-        self.skyrme = skyrme
-        self.energy = energy
-        self.imp_param = imp_param
+
+        if skyrme is not None and not isinstance(skyrme, int):
+            raise TypeError(&#39;skyrme must be an integer.&#39;)
+        else: self.skyrme = skyrme
+
+        if energy is not None and not isinstance(energy, float):
+            raise TypeError(&#39;energy must be an integer.&#39;)
+        else: self.energy = energy
+
+        if imp_param is not None and not isinstance(imp_param, float):
+            raise TypeError(&#39;imp_param must be an integer.&#39;)
+        else: self.imp_param = imp_param
+
+        self.name = self.get_name(imqmd=False)
 
         return
 
@@ -204,7 +237,7 @@ with a beam energy of 140 MeV/u. This can be created by</p>
         Parameters:
             imqmd : bool *optional*
                 If `True`, the system name will be formatted like
-                `&#39;ca48ni64_001e%140b2x-1&#39;`. If `False`, an ordinary readable name
+                `&#39;ca48ni64_001e140b2x-1&#39;`. If `False`, an ordinary readable name
                 will be coined. Default is `False`.
 
         Returns:
@@ -212,13 +245,17 @@ with a beam energy of 140 MeV/u. This can be created by</p>
                 A readable name or a name formatted for ImQMD program.
 
         &#34;&#34;&#34;
-        self.name = self.proj_symb + str(self.proj_A)
-        self.name += self.targ_symb + str(self.targ_A)
-        self.name += &#39;_%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
-        self.name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
-        self.name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
-        self.name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
-        return self.name
+        if imqmd is not None and not isinstance(imqmd, bool):
+            raise TypeError(&#39;imqmd must be a boolean.&#39;)
+
+        name = self.proj_symb + str(self.proj_A)
+        name += self.targ_symb + str(self.targ_A)
+        name += &#39;_&#39; if not (self.skyrme is None and self.energy is None and self.imp_param is None and not imqmd) else &#39;&#39;
+        name += &#39;_%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
+        name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
+        name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
+        name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
+        return name
 
     def __str__(self):
         return &#39;&lt;CollisionSystem&gt; name: &#39; + self.name</code></pre>
@@ -236,7 +273,7 @@ system.</p>
 <dl>
 <dt><strong><code>imqmd</code></strong> :&ensp;<code>bool</code> <em>optional</em></dt>
 <dd>If <code>True</code>, the system name will be formatted like
-<code>'ca48ni64_001e%140b2x-1'</code>. If <code>False</code>, an ordinary readable name
+<code>'ca48ni64_001e140b2x-1'</code>. If <code>False</code>, an ordinary readable name
 will be coined. Default is <code>False</code>.</dd>
 </dl>
 <h2 id="returns">Returns</h2>
@@ -257,7 +294,7 @@ will be coined. Default is <code>False</code>.</dd>
     Parameters:
         imqmd : bool *optional*
             If `True`, the system name will be formatted like
-            `&#39;ca48ni64_001e%140b2x-1&#39;`. If `False`, an ordinary readable name
+            `&#39;ca48ni64_001e140b2x-1&#39;`. If `False`, an ordinary readable name
             will be coined. Default is `False`.
 
     Returns:
@@ -265,13 +302,17 @@ will be coined. Default is <code>False</code>.</dd>
             A readable name or a name formatted for ImQMD program.
 
     &#34;&#34;&#34;
-    self.name = self.proj_symb + str(self.proj_A)
-    self.name += self.targ_symb + str(self.targ_A)
-    self.name += &#39;_%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
-    self.name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
-    self.name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
-    self.name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
-    return self.name</code></pre>
+    if imqmd is not None and not isinstance(imqmd, bool):
+        raise TypeError(&#39;imqmd must be a boolean.&#39;)
+
+    name = self.proj_symb + str(self.proj_A)
+    name += self.targ_symb + str(self.targ_A)
+    name += &#39;_&#39; if not (self.skyrme is None and self.energy is None and self.imp_param is None and not imqmd) else &#39;&#39;
+    name += &#39;_%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
+    name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
+    name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
+    name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
+    return name</code></pre>
 </details>
 </dd>
 </dl>

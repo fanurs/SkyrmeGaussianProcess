@@ -112,7 +112,8 @@ class GaussianEmulator:
         training results as below:
 
         >>> import numpy as np
-        >>> emulator = GaussianEmulator()
+        >>> import GaussianEmulator as gmu
+        >>> emulator = gmu.GaussianEmulator()
         >>> x_train = np.array([[0.0], [1.0]])
         >>> y_train = np.array([[0.0], [2.0]])
         >>> emulator.fit(x_train, y_train)

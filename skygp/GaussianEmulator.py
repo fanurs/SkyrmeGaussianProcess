@@ -14,6 +14,7 @@ observables, such as n/p ratios.
 
 """
 
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import sklearn.gaussian_process as gp
@@ -36,6 +37,9 @@ class GaussianEmulator:
             n_itr : int
                 The number of training iterations.
         """
+        if not isinstance(n_itr, int):
+            raise TypeError('n_itr must be an integer.')
+
         self.regressor.n_restarts_optimizer = n_itr
         return
 
@@ -43,13 +47,22 @@ class GaussianEmulator:
         """This trains the Gaussian emulator from `x` and `y`.
 
         Parameters:
-            x : array_like, shape (n_train, n_inputs)
+            x : numpy array, shape (n_train, n_inputs)
                 An array containing the inputs of training set.
 
-            y : array_like, shape (n_train, n_outputs)
+            y : numpy array, shape (n_train, n_outputs)
                 An array containing the outputs of training set.
 
         """
+        if not isinstance(x, np.ndarray):
+            raise TypeError('x must be a numpy array.')
+        if not isinstance(y, np.ndarray):
+            raise TypeError('y must be a numpy array.')
+        if x.ndim != 2:
+            raise ValueError('x must be two-dimensional.')
+        if y.ndim != 2:
+            raise ValueError('y must be two-dimensional.')
+
         self.x_train = np.copy(x)
         self.y_train = np.copy(y)
         self.regressor.fit(x, y)
@@ -62,11 +75,11 @@ class GaussianEmulator:
         been done to a satisfactory level.
 
         Parameters:
-            x : array_like, shape (n_train, n_inputs)
+            x : numpy array, shape (n_train, n_inputs)
                 An array containing the inputs of interest.
 
         Returns:
-            y_pred : array_like, shape (n_train, n_outputs)
+            y_pred : numpy array, shape (n_train, n_outputs)
                 An array containing the outputs predicted by the emulator.
                 When training is done correctly, this prediction should be
                 very close to the actual outputs, and hence can be used to
@@ -74,6 +87,9 @@ class GaussianEmulator:
                 consuming.
 
         """
+        if not isinstance(x, np.ndarray):
+            raise TypeError('x must be a numpy array.')
+
         y_pred = self.regressor.predict(x)
         return y_pred
 
@@ -102,8 +118,13 @@ class GaussianEmulator:
         <matplotlib.axes._subplots.AxesSubplot>
 
         """
-        if ax is None:
-            fig, ax = plt.subplots()
+        if not isinstance(ix, int):
+            raise TypeError('ix must be an integer.')
+        if ax is not None and not isinstance(ax, mpl.axes.Axes):
+            raise TypeError('ax must be a matplotlib.axes.Axes object.')
+
+        # create ax if not being passed
+        if ax is None: fig, ax = plt.subplots()
         
         # sort training data by i_slice
         argsort = np.argsort(self.x_train[:,ix])

@@ -1,1 +1,1 @@
-python -m doctest ../*.py
+python -m doctest -o ELLIPSIS ../*.py

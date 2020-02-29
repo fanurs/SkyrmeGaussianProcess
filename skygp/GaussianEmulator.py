@@ -116,7 +116,7 @@ class GaussianEmulator:
         >>> x_train = np.array([[0.0], [1.0]])
         >>> y_train = np.array([[0.0], [2.0]])
         >>> emulator.fit(x_train, y_train)
-        >>> emulator.inspect_training_xslice(0) # doctest: +ELLIPSIS
+        >>> emulator.inspect_training_xslice(0)
         <matplotlib.axes._subplots.AxesSubplot object at 0x...>
 
         """

@@ -9,6 +9,9 @@ Example:
 .. Section breaks are created with two blank lines.
 
 """
+
+import re
+
 class CollisionSystem:
     def __init__(self, proj, targ, skyrme=None, energy=None, imp_param=None):
         """Initialize the collision system.
@@ -45,9 +48,18 @@ class CollisionSystem:
         self.proj_A = int(''.join(re.findall('[0-9]+', proj)))
         self.targ_symb = (''.join(re.findall('[A-z]+', targ))).lower()
         self.targ_A = int(''.join(re.findall('[0-9]+', targ)))
-        self.skyrme = skyrme
-        self.energy = energy
-        self.imp_param = imp_param
+
+        if skyrme is not None and not isinstance(skyrme, int):
+            raise TypeError('skyrme must be an integer.')
+        else:self.skyrme = skyrme
+
+        if energy is not None and not isinstance(energy, float):
+            raise TypeError('energy must be an integer.')
+        else:self.energy = energy
+
+        if imp_param is not None and not isinstance(imp_param, float):
+            raise TypeError('imp_param must be an integer.')
+        else:self.imp_param = imp_param
 
         return
 
@@ -68,6 +80,9 @@ class CollisionSystem:
                 A readable name or a name formatted for ImQMD program.
 
         """
+        if imqmd is not None and not isinstance(imqmd, bool):
+            raise TypeError('imqmd must be a boolean.')
+
         self.name = self.proj_symb + str(self.proj_A)
         self.name += self.targ_symb + str(self.targ_A)
         self.name += '_%03d' % self.skyrme if self.skyrme is not None else ''

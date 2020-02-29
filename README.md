@@ -28,13 +28,13 @@ Project title: Constraining Skyrme with Bayesian inference on heavy-ion collisio
 The studies of nuclear physics are typically categorized into two approaches. The first approach is the so-called "ab initio methods" that seeks for a bottom-up model to describe nuclei. But just like any many-body problems, nuclear dynamics involves interactions among multiple neutrons and protons, making it very difficult to be solved even with the help of modern computers. This motivates physicists to come up with a second approach that describes atomic nuclei phenomenologically.
 </p>
 
-### Requirements (to do: write a script to check and install automatically for users)
-## Operating system
+## Requirements (to do: write a script to check and install automatically for users)
+### Operating system
 - Linux: Ok. All developments are made here so far.
 - OS X: Never tested. Maybe ok.
 - Windows: Not available yet. E.g. path names will be incompatible.
 
-## Python modules
+### Python modules
 - numpy (version?)
 - matplotlib (version?)
 - sklearn (version >= 0.22.1): for sklearn.gaussian_process.GaussianProcessRegressor

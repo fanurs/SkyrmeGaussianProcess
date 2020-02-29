@@ -3,6 +3,7 @@
 *.png
 *clean_ipynb.sh
 run_doc.sh
+*.swp
 
 # ignore by directories
 .ipynb_checkpoints

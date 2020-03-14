@@ -2,7 +2,6 @@
 *.log
 *.png
 *clean_ipynb.sh
-run_doc.sh
 *.swp
 todo.txt
 

@@ -42,5 +42,5 @@ The studies of nuclear physics are typically categorized into two approaches. Th
 - pytest (version?)
 
 """
-from .GaussianEmulator import GaussianEmulator
 from .CollisionSystem import CollisionSystem
+from .GaussianEmulator import GaussianEmulator

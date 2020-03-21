@@ -18,7 +18,7 @@ echo '"""' >> $basename/__init__.py
 # auto-documentation with pdoc3
 pdoc3 --force --html --config latex_math=True --output-dir ./docs $basename
 
-# import all classes under skygp to __init__.py
+# import all modules under skygp to __init__.py
 for file in skygp/*.py
 do
 	filebase=$(basename $file .py)
@@ -26,7 +26,7 @@ do
 	then
 		continue
 	else
-		echo 'from .'$filebase' import '$filebase >> $basename/__init__.py
+		echo 'from .'$filebase' import '* >> $basename/__init__.py
 	fi
 done
 

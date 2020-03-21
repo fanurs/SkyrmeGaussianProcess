@@ -1,18 +1,19 @@
-"""Collision system is a class to handle the reading and manipulation systems.  
+"""Collision system is a module to handle the reading and manipulation systems.
 
 Example:
 ----------
 .. block::
     I'm trying a literal block
 
-
 .. Section breaks are created with two blank lines.
 
 """
-
 import re
 
 class CollisionSystem:
+    """`CollisionSystem`is a class to handle the reading and manipulation systems.
+    """
+
     def __init__(self, proj, targ, skyrme=None, energy=None, imp_param=None):
         """Initialize the collision system.
 
@@ -30,7 +31,7 @@ class CollisionSystem:
 
             energy : float *optional*
                 Beam energy in MeV/u.
-            
+
             imp_param : float *optional*
                 Impact parameter in femtometer.
 
@@ -52,19 +53,17 @@ class CollisionSystem:
 
         if skyrme is not None and not isinstance(skyrme, int):
             raise TypeError('skyrme must be an integer.')
-        else: self.skyrme = skyrme
+        self.skyrme = skyrme
 
         if energy is not None and not isinstance(energy, float):
             raise TypeError('energy must be an integer.')
-        else: self.energy = energy
+        self.energy = energy
 
         if imp_param is not None and not isinstance(imp_param, float):
             raise TypeError('imp_param must be an integer.')
-        else: self.imp_param = imp_param
+        self.imp_param = imp_param
 
         self.name = self.get_name(imqmd=False)
-
-        return
 
     def get_name(self, imqmd=False):
         """Construct the ImQMD directory name.
@@ -88,8 +87,13 @@ class CollisionSystem:
 
         name = self.proj_symb + str(self.proj_A)
         name += self.targ_symb + str(self.targ_A)
-        name += '_' if not (self.skyrme is None and self.energy is None and self.imp_param is None and not imqmd) else ''
-        name += '_%03d' % self.skyrme if self.skyrme is not None else ''
+
+        # decide to add underscore or not
+        name_items = [self.skyrme, self.energy, self.imp_param]
+        add_underscore = not all(ele is None for ele in name_items)
+        name += '_' if add_underscore else ''
+
+        name += '%03d' % self.skyrme if self.skyrme is not None else ''
         name += 'e%d' % self.energy if self.energy is not None else ''
         name += 'b%d' + self.imp_param if self.imp_param is not None else ''
         name += 'x-1' if imqmd else '' # ImQMD version number (?)
@@ -97,4 +101,3 @@ class CollisionSystem:
 
     def __str__(self):
         return '<CollisionSystem> name: ' + self.name
-

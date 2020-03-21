@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.7.4" />
-<title>skygp.CollisionSystem API documentation</title>
-<meta name="description" content="Collision system is a class to handle the reading and manipulation systems …" />
+<title>skygp.collision_system API documentation</title>
+<meta name="description" content="Collision system is a module to handle the reading and manipulation systems …" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
@@ -18,11 +18,10 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>skygp.CollisionSystem</code></h1>
+<h1 class="title">Module <code>skygp.collision_system</code></h1>
 </header>
 <section id="section-intro">
-<p>Collision system is a class to handle the reading and manipulation systems.
-</p>
+<p>Collision system is a module to handle the reading and manipulation systems.</p>
 <div class="admonition block">
 <p class="admonition-title">Block</p>
 <p>I'm trying a literal block</p>
@@ -32,21 +31,22 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">&#34;&#34;&#34;Collision system is a class to handle the reading and manipulation systems.  
+<pre><code class="python">&#34;&#34;&#34;Collision system is a module to handle the reading and manipulation systems.
 
 Example:
 ----------
 .. block::
     I&#39;m trying a literal block
 
-
 .. Section breaks are created with two blank lines.
 
 &#34;&#34;&#34;
-
 import re
 
 class CollisionSystem:
+    &#34;&#34;&#34;`CollisionSystem`is a class to handle the reading and manipulation systems.
+    &#34;&#34;&#34;
+
     def __init__(self, proj, targ, skyrme=None, energy=None, imp_param=None):
         &#34;&#34;&#34;Initialize the collision system.
 
@@ -64,7 +64,7 @@ class CollisionSystem:
 
             energy : float *optional*
                 Beam energy in MeV/u.
-            
+
             imp_param : float *optional*
                 Impact parameter in femtometer.
 
@@ -86,19 +86,17 @@ class CollisionSystem:
 
         if skyrme is not None and not isinstance(skyrme, int):
             raise TypeError(&#39;skyrme must be an integer.&#39;)
-        else: self.skyrme = skyrme
+        self.skyrme = skyrme
 
         if energy is not None and not isinstance(energy, float):
             raise TypeError(&#39;energy must be an integer.&#39;)
-        else: self.energy = energy
+        self.energy = energy
 
         if imp_param is not None and not isinstance(imp_param, float):
             raise TypeError(&#39;imp_param must be an integer.&#39;)
-        else: self.imp_param = imp_param
+        self.imp_param = imp_param
 
         self.name = self.get_name(imqmd=False)
-
-        return
 
     def get_name(self, imqmd=False):
         &#34;&#34;&#34;Construct the ImQMD directory name.
@@ -122,8 +120,13 @@ class CollisionSystem:
 
         name = self.proj_symb + str(self.proj_A)
         name += self.targ_symb + str(self.targ_A)
-        name += &#39;_&#39; if not (self.skyrme is None and self.energy is None and self.imp_param is None and not imqmd) else &#39;&#39;
-        name += &#39;_%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
+
+        # decide to add underscore or not
+        name_items = [self.skyrme, self.energy, self.imp_param]
+        add_underscore = not all(ele is None for ele in name_items)
+        name += &#39;_&#39; if add_underscore else &#39;&#39;
+
+        name += &#39;%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
         name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
         name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
         name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
@@ -142,12 +145,13 @@ class CollisionSystem:
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="skygp.CollisionSystem.CollisionSystem"><code class="flex name class">
+<dt id="skygp.collision_system.CollisionSystem"><code class="flex name class">
 <span>class <span class="ident">CollisionSystem</span></span>
 <span>(</span><span>proj, targ, skyrme=None, energy=None, imp_param=None)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Initialize the collision system.</p>
+<section class="desc"><p><a title="skygp.collision_system.CollisionSystem" href="#skygp.collision_system.CollisionSystem"><code>CollisionSystem</code></a>is a class to handle the reading and manipulation systems.</p>
+<p>Initialize the collision system.</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
 <dt><strong><code>proj</code></strong> :&ensp;<code>str</code></dt>
@@ -175,6 +179,9 @@ with a beam energy of 140 MeV/u. This can be created by</p>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class CollisionSystem:
+    &#34;&#34;&#34;`CollisionSystem`is a class to handle the reading and manipulation systems.
+    &#34;&#34;&#34;
+
     def __init__(self, proj, targ, skyrme=None, energy=None, imp_param=None):
         &#34;&#34;&#34;Initialize the collision system.
 
@@ -192,7 +199,7 @@ with a beam energy of 140 MeV/u. This can be created by</p>
 
             energy : float *optional*
                 Beam energy in MeV/u.
-            
+
             imp_param : float *optional*
                 Impact parameter in femtometer.
 
@@ -214,19 +221,17 @@ with a beam energy of 140 MeV/u. This can be created by</p>
 
         if skyrme is not None and not isinstance(skyrme, int):
             raise TypeError(&#39;skyrme must be an integer.&#39;)
-        else: self.skyrme = skyrme
+        self.skyrme = skyrme
 
         if energy is not None and not isinstance(energy, float):
             raise TypeError(&#39;energy must be an integer.&#39;)
-        else: self.energy = energy
+        self.energy = energy
 
         if imp_param is not None and not isinstance(imp_param, float):
             raise TypeError(&#39;imp_param must be an integer.&#39;)
-        else: self.imp_param = imp_param
+        self.imp_param = imp_param
 
         self.name = self.get_name(imqmd=False)
-
-        return
 
     def get_name(self, imqmd=False):
         &#34;&#34;&#34;Construct the ImQMD directory name.
@@ -250,8 +255,13 @@ with a beam energy of 140 MeV/u. This can be created by</p>
 
         name = self.proj_symb + str(self.proj_A)
         name += self.targ_symb + str(self.targ_A)
-        name += &#39;_&#39; if not (self.skyrme is None and self.energy is None and self.imp_param is None and not imqmd) else &#39;&#39;
-        name += &#39;_%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
+
+        # decide to add underscore or not
+        name_items = [self.skyrme, self.energy, self.imp_param]
+        add_underscore = not all(ele is None for ele in name_items)
+        name += &#39;_&#39; if add_underscore else &#39;&#39;
+
+        name += &#39;%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
         name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
         name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
         name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
@@ -262,7 +272,7 @@ with a beam energy of 140 MeV/u. This can be created by</p>
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="skygp.CollisionSystem.CollisionSystem.get_name"><code class="name flex">
+<dt id="skygp.collision_system.CollisionSystem.get_name"><code class="name flex">
 <span>def <span class="ident">get_name</span></span>(<span>self, imqmd=False)</span>
 </code></dt>
 <dd>
@@ -307,8 +317,13 @@ will be coined. Default is <code>False</code>.</dd>
 
     name = self.proj_symb + str(self.proj_A)
     name += self.targ_symb + str(self.targ_A)
-    name += &#39;_&#39; if not (self.skyrme is None and self.energy is None and self.imp_param is None and not imqmd) else &#39;&#39;
-    name += &#39;_%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
+
+    # decide to add underscore or not
+    name_items = [self.skyrme, self.energy, self.imp_param]
+    add_underscore = not all(ele is None for ele in name_items)
+    name += &#39;_&#39; if add_underscore else &#39;&#39;
+
+    name += &#39;%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
     name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
     name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
     name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
@@ -336,9 +351,9 @@ will be coined. Default is <code>False</code>.</dd>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="skygp.CollisionSystem.CollisionSystem" href="#skygp.CollisionSystem.CollisionSystem">CollisionSystem</a></code></h4>
+<h4><code><a title="skygp.collision_system.CollisionSystem" href="#skygp.collision_system.CollisionSystem">CollisionSystem</a></code></h4>
 <ul class="">
-<li><code><a title="skygp.CollisionSystem.CollisionSystem.get_name" href="#skygp.CollisionSystem.CollisionSystem.get_name">get_name</a></code></li>
+<li><code><a title="skygp.collision_system.CollisionSystem.get_name" href="#skygp.collision_system.CollisionSystem.get_name">get_name</a></code></li>
 </ul>
 </li>
 </ul>

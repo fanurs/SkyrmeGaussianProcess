@@ -1,11 +1,12 @@
-MODULENAME = YOURPOJECTFOLDERHERE 
+MODULENAME=skygp
 
 help:
 	@echo ""
-	@echo "Welcome to my project!!!"
+	@echo "Welcome to skygp!!!"
 	@echo "To get started create an environment using:"
 	@echo "	make init"
 	@echo "	conda activate ./envs"
+	@echo "  source activate ./envs"
 	@echo ""
 	@echo "To generate project documentation use:"
 	@echo "	make doc"
@@ -22,13 +23,15 @@ init:
 	conda env create --prefix ./envs --file environment.yml
 
 doc:
-	pdoc --force --html --output-dir ./docs $(MODULENAME)
+	bash run_doc.sh $(MODULENAME)
 
 lint:
 	pylint $(MODULENAME)
 
 test:
-	pytest 
+	cd ./$(MODULENAME)/__test__/
+	pytest -v
+	cd -
 
 .PHONY: init doc lint test 
 

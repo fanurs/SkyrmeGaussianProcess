@@ -29,9 +29,7 @@ lint:
 	pylint $(MODULENAME)
 
 test:
-	cd ./$(MODULENAME)/__test__/
-	pytest -v
-	cd -
+	pytest -v $(MODULENAME)
 
 .PHONY: init doc lint test 
 

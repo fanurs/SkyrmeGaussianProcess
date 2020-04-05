@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>skygp.collision_system API documentation</title>
+<meta name="description" content="Collision system is a module to handle the reading and manipulation systems …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>skygp.collision_system</code></h1>
+</header>
+<section id="section-intro">
+<p>Collision system is a module to handle the reading and manipulation systems.</p>
+<div class="admonition block">
+<p class="admonition-title">Block</p>
+<p>I'm trying a literal block</p>
+</div>
+<p>.. Section breaks are created with two blank lines.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Collision system is a module to handle the reading and manipulation systems.
+
+Example:
+----------
+.. block::
+    I&#39;m trying a literal block
+
+.. Section breaks are created with two blank lines.
+
+&#34;&#34;&#34;
+import re
+
+class CollisionSystem:
+    &#34;&#34;&#34;`CollisionSystem`is a class to handle the reading and manipulation systems.
+    &#34;&#34;&#34;
+
+    def __init__(self, proj, targ, skyrme=None, energy=None, imp_param=None):
+        &#34;&#34;&#34;Initialize the collision system.
+
+        Parameters:
+            proj : str
+                To describe the projectile nucleus with a string containing the
+                element symbol and mass number.
+
+            targ : str
+                To describe the target nucleus with a string containing the
+                element symbol and mass number.
+
+            skyrme : int *optional*
+                The Skyrme number that represents a set of Skyrme parameters.
+
+            energy : float *optional*
+                Beam energy in MeV/u.
+
+            imp_param : float *optional*
+                Impact parameter in femtometer.
+
+        Examples:
+        ----------
+        Consider a beam particle of calcium-48 hitting on target nickel-64
+        with a beam energy of 140 MeV/u. This can be created by
+
+        &gt;&gt;&gt; coll_sys = CollisionSystem(&#39;ca48&#39;, &#39;ni64&#39;, energy=140.0)
+        &gt;&gt;&gt; print(coll_sys)
+        &lt;CollisionSystem&gt; name: ca48ni64_e140
+
+        &#34;&#34;&#34;
+
+        self.proj_symb = (&#39;&#39;.join(re.findall(&#39;[A-z]+&#39;, proj))).lower()
+        self.proj_A = int(&#39;&#39;.join(re.findall(&#39;[0-9]+&#39;, proj)))
+        self.targ_symb = (&#39;&#39;.join(re.findall(&#39;[A-z]+&#39;, targ))).lower()
+        self.targ_A = int(&#39;&#39;.join(re.findall(&#39;[0-9]+&#39;, targ)))
+
+        if skyrme is not None and not isinstance(skyrme, int):
+            raise TypeError(&#39;skyrme must be an integer.&#39;)
+        self.skyrme = skyrme
+
+        if energy is not None and not isinstance(energy, float):
+            raise TypeError(&#39;energy must be an integer.&#39;)
+        self.energy = energy
+
+        if imp_param is not None and not isinstance(imp_param, float):
+            raise TypeError(&#39;imp_param must be an integer.&#39;)
+        self.imp_param = imp_param
+
+        self.name = self.get_name(imqmd=False)
+
+    def get_name(self, imqmd=False):
+        &#34;&#34;&#34;Construct the ImQMD directory name.
+
+        This also provides a string of readable name to inspect the collision
+        system.
+
+        Parameters:
+            imqmd : bool *optional*
+                If `True`, the system name will be formatted like
+                `&#39;ca48ni64_001e140b2x-1&#39;`. If `False`, an ordinary readable name
+                will be coined. Default is `False`.
+
+        Returns:
+            name : str
+                A readable name or a name formatted for ImQMD program.
+
+        &#34;&#34;&#34;
+        if imqmd is not None and not isinstance(imqmd, bool):
+            raise TypeError(&#39;imqmd must be a boolean.&#39;)
+
+        name = self.proj_symb + str(self.proj_A)
+        name += self.targ_symb + str(self.targ_A)
+
+        # decide to add underscore or not
+        name_items = [self.skyrme, self.energy, self.imp_param]
+        add_underscore = not all(ele is None for ele in name_items)
+        name += &#39;_&#39; if add_underscore else &#39;&#39;
+
+        name += &#39;%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
+        name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
+        name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
+        name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
+        return name
+
+    def __str__(self):
+        return &#39;&lt;CollisionSystem&gt; name: &#39; + self.name</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="skygp.collision_system.CollisionSystem"><code class="flex name class">
+<span>class <span class="ident">CollisionSystem</span></span>
+<span>(</span><span>proj, targ, skyrme=None, energy=None, imp_param=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p><a title="skygp.collision_system.CollisionSystem" href="#skygp.collision_system.CollisionSystem"><code>CollisionSystem</code></a>is a class to handle the reading and manipulation systems.</p>
+<p>Initialize the collision system.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>proj</code></strong> :&ensp;<code>str</code></dt>
+<dd>To describe the projectile nucleus with a string containing the
+element symbol and mass number.</dd>
+<dt><strong><code>targ</code></strong> :&ensp;<code>str</code></dt>
+<dd>To describe the target nucleus with a string containing the
+element symbol and mass number.</dd>
+<dt><strong><code>skyrme</code></strong> :&ensp;<code>int</code> <em>optional</em></dt>
+<dd>The Skyrme number that represents a set of Skyrme parameters.</dd>
+<dt><strong><code>energy</code></strong> :&ensp;<code>float</code> <em>optional</em></dt>
+<dd>Beam energy in MeV/u.</dd>
+<dt><strong><code>imp_param</code></strong> :&ensp;<code>float</code> <em>optional</em></dt>
+<dd>Impact parameter in femtometer.</dd>
+</dl>
+<h2 id="examples">Examples:</h2>
+<p>Consider a beam particle of calcium-48 hitting on target nickel-64
+with a beam energy of 140 MeV/u. This can be created by</p>
+<pre><code>&gt;&gt;&gt; coll_sys = CollisionSystem('ca48', 'ni64', energy=140.0)
+&gt;&gt;&gt; print(coll_sys)
+&lt;CollisionSystem&gt; name: ca48ni64_e140
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CollisionSystem:
+    &#34;&#34;&#34;`CollisionSystem`is a class to handle the reading and manipulation systems.
+    &#34;&#34;&#34;
+
+    def __init__(self, proj, targ, skyrme=None, energy=None, imp_param=None):
+        &#34;&#34;&#34;Initialize the collision system.
+
+        Parameters:
+            proj : str
+                To describe the projectile nucleus with a string containing the
+                element symbol and mass number.
+
+            targ : str
+                To describe the target nucleus with a string containing the
+                element symbol and mass number.
+
+            skyrme : int *optional*
+                The Skyrme number that represents a set of Skyrme parameters.
+
+            energy : float *optional*
+                Beam energy in MeV/u.
+
+            imp_param : float *optional*
+                Impact parameter in femtometer.
+
+        Examples:
+        ----------
+        Consider a beam particle of calcium-48 hitting on target nickel-64
+        with a beam energy of 140 MeV/u. This can be created by
+
+        &gt;&gt;&gt; coll_sys = CollisionSystem(&#39;ca48&#39;, &#39;ni64&#39;, energy=140.0)
+        &gt;&gt;&gt; print(coll_sys)
+        &lt;CollisionSystem&gt; name: ca48ni64_e140
+
+        &#34;&#34;&#34;
+
+        self.proj_symb = (&#39;&#39;.join(re.findall(&#39;[A-z]+&#39;, proj))).lower()
+        self.proj_A = int(&#39;&#39;.join(re.findall(&#39;[0-9]+&#39;, proj)))
+        self.targ_symb = (&#39;&#39;.join(re.findall(&#39;[A-z]+&#39;, targ))).lower()
+        self.targ_A = int(&#39;&#39;.join(re.findall(&#39;[0-9]+&#39;, targ)))
+
+        if skyrme is not None and not isinstance(skyrme, int):
+            raise TypeError(&#39;skyrme must be an integer.&#39;)
+        self.skyrme = skyrme
+
+        if energy is not None and not isinstance(energy, float):
+            raise TypeError(&#39;energy must be an integer.&#39;)
+        self.energy = energy
+
+        if imp_param is not None and not isinstance(imp_param, float):
+            raise TypeError(&#39;imp_param must be an integer.&#39;)
+        self.imp_param = imp_param
+
+        self.name = self.get_name(imqmd=False)
+
+    def get_name(self, imqmd=False):
+        &#34;&#34;&#34;Construct the ImQMD directory name.
+
+        This also provides a string of readable name to inspect the collision
+        system.
+
+        Parameters:
+            imqmd : bool *optional*
+                If `True`, the system name will be formatted like
+                `&#39;ca48ni64_001e140b2x-1&#39;`. If `False`, an ordinary readable name
+                will be coined. Default is `False`.
+
+        Returns:
+            name : str
+                A readable name or a name formatted for ImQMD program.
+
+        &#34;&#34;&#34;
+        if imqmd is not None and not isinstance(imqmd, bool):
+            raise TypeError(&#39;imqmd must be a boolean.&#39;)
+
+        name = self.proj_symb + str(self.proj_A)
+        name += self.targ_symb + str(self.targ_A)
+
+        # decide to add underscore or not
+        name_items = [self.skyrme, self.energy, self.imp_param]
+        add_underscore = not all(ele is None for ele in name_items)
+        name += &#39;_&#39; if add_underscore else &#39;&#39;
+
+        name += &#39;%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
+        name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
+        name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
+        name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
+        return name
+
+    def __str__(self):
+        return &#39;&lt;CollisionSystem&gt; name: &#39; + self.name</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="skygp.collision_system.CollisionSystem.get_name"><code class="name flex">
+<span>def <span class="ident">get_name</span></span>(<span>self, imqmd=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Construct the ImQMD directory name.</p>
+<p>This also provides a string of readable name to inspect the collision
+system.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>imqmd</code></strong> :&ensp;<code>bool</code> <em>optional</em></dt>
+<dd>If <code>True</code>, the system name will be formatted like
+<code>'ca48ni64_001e140b2x-1'</code>. If <code>False</code>, an ordinary readable name
+will be coined. Default is <code>False</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>A readable name or a name formatted for ImQMD program.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_name(self, imqmd=False):
+    &#34;&#34;&#34;Construct the ImQMD directory name.
+
+    This also provides a string of readable name to inspect the collision
+    system.
+
+    Parameters:
+        imqmd : bool *optional*
+            If `True`, the system name will be formatted like
+            `&#39;ca48ni64_001e140b2x-1&#39;`. If `False`, an ordinary readable name
+            will be coined. Default is `False`.
+
+    Returns:
+        name : str
+            A readable name or a name formatted for ImQMD program.
+
+    &#34;&#34;&#34;
+    if imqmd is not None and not isinstance(imqmd, bool):
+        raise TypeError(&#39;imqmd must be a boolean.&#39;)
+
+    name = self.proj_symb + str(self.proj_A)
+    name += self.targ_symb + str(self.targ_A)
+
+    # decide to add underscore or not
+    name_items = [self.skyrme, self.energy, self.imp_param]
+    add_underscore = not all(ele is None for ele in name_items)
+    name += &#39;_&#39; if add_underscore else &#39;&#39;
+
+    name += &#39;%03d&#39; % self.skyrme if self.skyrme is not None else &#39;&#39;
+    name += &#39;e%d&#39; % self.energy if self.energy is not None else &#39;&#39;
+    name += &#39;b%d&#39; + self.imp_param if self.imp_param is not None else &#39;&#39;
+    name += &#39;x-1&#39; if imqmd else &#39;&#39; # ImQMD version number (?)
+    return name</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#example">Example:</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="skygp" href="index.html">skygp</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="skygp.collision_system.CollisionSystem" href="#skygp.collision_system.CollisionSystem">CollisionSystem</a></code></h4>
+<ul class="">
+<li><code><a title="skygp.collision_system.CollisionSystem.get_name" href="#skygp.collision_system.CollisionSystem.get_name">get_name</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

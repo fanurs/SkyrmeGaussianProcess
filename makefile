@@ -23,15 +23,13 @@ init:
 	conda env create --prefix ./envs --file environment.yml
 
 doc:
-	bash run_doc.sh $(MODULENAME)
+	pdoc --force --html --output-dir ./docs $(MODULENAME)
 
 lint:
 	pylint $(MODULENAME)
 
 test:
-	cd ./$(MODULENAME)/__test__/
-	pytest -v
-	cd -
+	pytest -v $(MODULENAME)
 
 .PHONY: init doc lint test 
 

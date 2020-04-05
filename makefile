@@ -23,7 +23,7 @@ init:
 	conda env create --prefix ./envs --file environment.yml
 
 doc:
-	bash run_doc.sh $(MODULENAME)
+	pdoc --force --html --output-dir ./docs $(MODULENAME)
 
 lint:
 	pylint $(MODULENAME)

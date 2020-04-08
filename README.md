@@ -16,7 +16,7 @@ Documentation is automatically generated with `pdoc3`. By running `$ ./run_doc.s
 
 ## Tutorials
 - [Gaussian emulator basics](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb) or [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb)
-- [A very short example](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-a_very_short_example.ipynb)
+- [A very short example](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-a_very_short_example.py)
 
 ## Physics objective
 Project title: Constraining Skyrme with Bayesian inference on heavy-ion collisions and Gaussian-emulated ImQMD

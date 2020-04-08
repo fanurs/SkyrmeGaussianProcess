@@ -22,12 +22,10 @@
 </header>
 <section id="section-intro">
 <h1 id="skygp-skyrme-gaussian-process"><a title="skygp" href="#skygp"><code>skygp</code></a> - Skyrme Gaussian Process</h1>
+<p>Developed by Chi-En Teh (Fanurs) for the class CMSE-802.</p>
 <p>Source code: <a href="https://github.com/Fanurs/SkyrmeGaussianProcess/">https://github.com/Fanurs/SkyrmeGaussianProcess/</a></p>
 <p>Documentation: <a href="https://fanurs.github.io/SkyrmeGaussianProcess/">https://fanurs.github.io/SkyrmeGaussianProcess/</a></p>
-<p>Developed by Chi-En Teh (Fanurs) for the class CMSE-802.</p>
-<p align="center">
-This repository is under development. The expected date of completion: April 2020.
-</p>
+<p>Documentation is automatically generated with <code>pdoc3</code>. By running <code>$ ./run_doc.sh skygp/</code>, the <code>./docs/*.html</code> files will be updated accordingly.</p>
 <h2 id="what-do-these-directories-contain">What do these directories contain?</h2>
 <ul>
 <li><code>skygp/</code>: Source codes of this sofware.</li>
@@ -38,6 +36,7 @@ This repository is under development. The expected date of completion: April 202
 <h2 id="tutorials">Tutorials</h2>
 <ul>
 <li><a href="https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb">Gaussian emulator basics</a> or <a href="https://colab.research.google.com/github/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"></a></li>
+<li><a href="https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-a_very_short_example.py">A very short example</a></li>
 </ul>
 <h2 id="physics-objective">Physics objective</h2>
 <p>Project title: Constraining Skyrme with Bayesian inference on heavy-ion collisions and Gaussian-emulated ImQMD</p>
@@ -45,19 +44,15 @@ This repository is under development. The expected date of completion: April 202
 <p><p align="justify">
 The studies of nuclear physics are typically categorized into two approaches. The first approach is the so-called "ab initio methods" that seeks for a bottom-up model to describe nuclei. But just like any many-body problems, nuclear dynamics involves interactions among multiple neutrons and protons, making it very difficult to be solved even with the help of modern computers. This motivates physicists to come up with a second approach that describes atomic nuclei phenomenologically.
 </p></p>
-<h2 id="requirements-to-do-write-a-script-to-check-and-install-automatically-for-users">Requirements (to do: write a script to check and install automatically for users)</h2>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>See <code>./environment.yml</code>.</li>
+</ul>
 <h3 id="operating-system">Operating system</h3>
 <ul>
 <li>Linux: Ok. All developments are made here so far.</li>
 <li>OS X: Never tested. Maybe ok.</li>
 <li>Windows: Not available yet. E.g. path names will be incompatible.</li>
-</ul>
-<h3 id="python-modules">Python modules</h3>
-<ul>
-<li>numpy (version?)</li>
-<li>matplotlib (version?)</li>
-<li>sklearn (version &gt;= 0.22.1): for sklearn.gaussian_process.GaussianProcessRegressor</li>
-<li>pytest (version?)</li>
 </ul>
 <details class="source">
 <summary>
@@ -66,16 +61,13 @@ The studies of nuclear physics are typically categorized into two approaches. Th
 <pre><code class="python">&#34;&#34;&#34;
 # `skygp` - Skyrme Gaussian Process
 
+Developed by Chi-En Teh (Fanurs) for the class CMSE-802.
+
 Source code: https://github.com/Fanurs/SkyrmeGaussianProcess/
 
 Documentation: https://fanurs.github.io/SkyrmeGaussianProcess/
 
-
-Developed by Chi-En Teh (Fanurs) for the class CMSE-802.
-
-&lt;p align=&#34;center&#34;&gt;
-  This repository is under development. The expected date of completion: April 2020.
-&lt;/p&gt;
+Documentation is automatically generated with `pdoc3`. By running `$ ./run_doc.sh skygp/`, the `./docs/*.html` files will be updated accordingly.
 
 ## What do these directories contain?
 - `skygp/`: Source codes of this sofware.
@@ -85,6 +77,7 @@ Developed by Chi-En Teh (Fanurs) for the class CMSE-802.
 
 ## Tutorials
 - [Gaussian emulator basics](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb) or [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb)
+- [A very short example](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-a_very_short_example.py)
 
 ## Physics objective
 Project title: Constraining Skyrme with Bayesian inference on heavy-ion collisions and Gaussian-emulated ImQMD
@@ -94,17 +87,13 @@ Project title: Constraining Skyrme with Bayesian inference on heavy-ion collisio
 The studies of nuclear physics are typically categorized into two approaches. The first approach is the so-called &#34;ab initio methods&#34; that seeks for a bottom-up model to describe nuclei. But just like any many-body problems, nuclear dynamics involves interactions among multiple neutrons and protons, making it very difficult to be solved even with the help of modern computers. This motivates physicists to come up with a second approach that describes atomic nuclei phenomenologically.
 &lt;/p&gt;
 
-## Requirements (to do: write a script to check and install automatically for users)
+## Requirements
+- See `./environment.yml`.
+
 ### Operating system
 - Linux: Ok. All developments are made here so far.
 - OS X: Never tested. Maybe ok.
 - Windows: Not available yet. E.g. path names will be incompatible.
-
-### Python modules
-- numpy (version?)
-- matplotlib (version?)
-- sklearn (version &gt;= 0.22.1): for sklearn.gaussian_process.GaussianProcessRegressor
-- pytest (version?)
 
 &#34;&#34;&#34;</code></pre>
 </details>
@@ -140,9 +129,8 @@ The studies of nuclear physics are typically categorized into two approaches. Th
 <li><a href="#overview">Overview</a></li>
 </ul>
 </li>
-<li><a href="#requirements-to-do-write-a-script-to-check-and-install-automatically-for-users">Requirements (to do: write a script to check and install automatically for users)</a><ul>
+<li><a href="#requirements">Requirements</a><ul>
 <li><a href="#operating-system">Operating system</a></li>
-<li><a href="#python-modules">Python modules</a></li>
 </ul>
 </li>
 </ul>

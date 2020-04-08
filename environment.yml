@@ -5,6 +5,7 @@ dependencies:
    - pdoc3
    - numpy
    - scipy
+   - pandas
    - scikit-learn
    - matplotlib
    - autopep8

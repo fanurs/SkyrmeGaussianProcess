@@ -18,7 +18,6 @@ help:
 	@echo "	make test"
 	@echo ""
 	
-
 init:
 	conda env create --prefix ./envs --file environment.yml
 
@@ -29,9 +28,7 @@ lint:
 	pylint $(MODULENAME)
 
 test:
-	cd ./$(MODULENAME)/__test__/
-	pytest -v
-	cd -
+	pytest -v $(MODULENAME)/__tests__/
 
 .PHONY: init doc lint test 
 

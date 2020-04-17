@@ -11,7 +11,7 @@ sys.path.append(SKYGP_DIR)
 # modules that facilitate the writing of test functions
 
 # import the to-be-tested module
-from collision_system import CollisionSystem
+from data_manager import CollisionSystem
 
 # create object from the module
 coll_sys = CollisionSystem('Ca48', 'Sn124')

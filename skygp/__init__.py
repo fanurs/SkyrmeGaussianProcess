@@ -36,5 +36,5 @@ The studies of nuclear physics are typically categorized into two approaches. Th
 - Windows: Not available yet. E.g. path names will be incompatible.
 
 """
-from .collision_system import *
+from .data_manager import *
 from .gaussian_emulator import *

@@ -1,4 +1,4 @@
-"""Collision system is a module to handle the reading and manipulation systems.
+"""`data_manager` is a module to handle the reading and manipulation simulation data.
 
 Example:
 ----------
@@ -9,9 +9,12 @@ Example:
 
 """
 import re
+import numpy as np
+import pandas as pd
+import itertools as itr
 
 class CollisionSystem:
-    """`CollisionSystem`is a class to handle the reading and manipulation systems.
+    """`CollisionSystem` is a class to handle the reading and manipulation systems.
     """
 
     def __init__(self, proj, targ, skyrme=None, energy=None, imp_param=None):
@@ -101,3 +104,72 @@ class CollisionSystem:
 
     def __str__(self):
         return '<CollisionSystem> name: ' + self.name
+
+class SimulationReader:
+    """`SimulationReader` process simulation outputs.
+    """
+
+    def __init__(self, data_dir):
+        self.data_dir = data_dir
+        self.filename = 'NP-EK-A16Z6.DAT'
+        self.file_header = ['beam_E', 'imp_param', 'ene_cm', \
+                            'yield_p', 'yield_p_err', 'yield_n', 'yield_n_err', \
+                            'single_ratio', 'single_ratio_err' \
+                           ]
+        self.param_filename = 'param.dat'
+
+    def get_data(self, subdir_fmt_numer, subdir_fmt_denom, param_codes, energy_range):
+        # check subdir_fmt
+        for string in [subdir_fmt_numer, subdir_fmt_denom]:
+            if not (string.count('%') and string.count('%03d')):
+                raise ValueError('"%s" should contain exactly one placeholder "%%03d".' % string)
+
+        # read in the `x_train`
+        path = '%s/%s' % (self.data_dir, self.param_filename)
+        x_train = pd.read_csv(path, delim_whitespace=True)
+
+        # read in the `y_train`
+        y_train = []
+        header_train = []
+        for code in param_codes:
+            df_sr = dict()
+            numer = subdir_fmt_numer % code
+            denom = subdir_fmt_denom % code
+            for subdir in [numer, denom]:
+                path = '%s/%s/%s' % (self.data_dir, subdir, self.filename)
+                df = pd.read_csv(path, names=self.file_header, delim_whitespace=True)
+                df = df[['ene_cm', 'single_ratio']]
+                df = df[(df['ene_cm'] >= energy_range[0])]
+                df = df[(df['ene_cm'] <= energy_range[1])]
+                df = df.astype(float)
+                df_sr[subdir] = df
+
+            # check if ene_cm column is identical in both systems
+            ene_cm = list(df_sr[numer]['ene_cm'])
+            if ene_cm != list(df_sr[denom]['ene_cm']):
+                raise ValueError('Systems for calculating double ratio have inconsistent ene_cm')
+
+            # check if ene_cm identical to previous ene_cm
+            if header_train == []:
+                header_train = ene_cm
+            else:
+                if header_train != ene_cm:
+                    raise ValueError('Mismatch ene_cm for parameter code %03d' % skyrme)
+
+            # calculate the double ratio
+            df_dr = df_sr[numer].copy()
+            df_dr.rename(columns={'single_ratio': 'double_ratio'}, inplace=True)
+            df_dr['double_ratio'] /= df_sr[denom]['single_ratio']
+
+            # append to training data
+            y_train.append(list(df_dr['double_ratio']))
+
+        # finalize the formats of x_train and y_train
+        x_train.set_index('code', inplace=True)
+        x_train = x_train.reindex(param_codes)
+        header_train = ['ene_cm_%03d' % ele for ele in header_train]
+        y_train = pd.DataFrame(y_train, columns=header_train)
+        y_train['code'] = param_codes
+        y_train.set_index('code', inplace=True)
+
+        return x_train, y_train

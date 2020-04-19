@@ -19,6 +19,9 @@ Documentation is automatically generated with `pdoc3`. By running `$ ./run_doc.s
 - [Emulating ImQMD data](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-demonstrating_gaussian_emulation.ipynb) or [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-demonstrating_gaussian_emulation.ipynb)
 - [A very short example](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-a_very_short_example.py)
 
+## Videos
+[![skygp - Skyrme Gaussian Process](https://img.youtube.com/vi/YYOWwxlnMvk/0.jpg)](https://youtu.be/YYOWwxlnMvk)
+
 ## Physics objective
 Project title: Constraining Skyrme with Bayesian inference on heavy-ion collisions and Gaussian-emulated ImQMD
 

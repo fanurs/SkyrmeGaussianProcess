@@ -18,6 +18,7 @@ Documentation is automatically generated with `pdoc3`. By running `$ ./run_doc.s
 - [Gaussian emulator basics](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb) or [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb)
 - [Emulating ImQMD data](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-demonstrating_gaussian_emulation.ipynb) or [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-demonstrating_gaussian_emulation.ipynb)
 - [A very short example](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-a_very_short_example.py)
+- [Isotope mass](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-isotope_mass.py)
 
 ## Videos
 [![skygp - Skyrme Gaussian Process](https://img.youtube.com/vi/YYOWwxlnMvk/0.jpg)](https://youtu.be/YYOWwxlnMvk)

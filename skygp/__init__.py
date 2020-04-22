@@ -39,3 +39,4 @@ The studies of nuclear physics are typically categorized into two approaches. Th
 """
 from .data_manager import *
 from .gaussian_emulator import *
+from .isotope_mass import *

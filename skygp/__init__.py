@@ -19,6 +19,10 @@ Documentation is automatically generated with `pdoc3`. By running `$ ./run_doc.s
 - [Gaussian emulator basics](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb) or [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-emulating_a_toy_model.ipynb)
 - [Emulating ImQMD data](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-demonstrating_gaussian_emulation.ipynb) or [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-demonstrating_gaussian_emulation.ipynb)
 - [A very short example](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-a_very_short_example.py)
+- [Isotope mass](https://github.com/Fanurs/SkyrmeGaussianProcess/blob/master/tutorials/TUT-isotope_mass.py)
+
+## Videos
+[![skygp - Skyrme Gaussian Process](https://img.youtube.com/vi/YYOWwxlnMvk/0.jpg)](https://youtu.be/YYOWwxlnMvk)
 
 ## Physics objective
 Project title: Constraining Skyrme with Bayesian inference on heavy-ion collisions and Gaussian-emulated ImQMD
@@ -37,13 +41,6 @@ The studies of nuclear physics are typically categorized into two approaches. Th
 - Windows: Not available yet. E.g. path names will be incompatible.
 
 """
-import os
-import inspect
-FILE_PATH = os.path.realpath(inspect.getsourcefile(lambda: 0))
-MODULE_DIR = os.path.dirname(FILE_PATH)
-PROJECT_DIR = os.path.realpath(os.path.join(MODULE_DIR, os.pardir))
-del FILE_PATH # prevent variable contamination
-
 from .data_manager import *
 from .gaussian_emulator import *
 from .isotope_mass import *

@@ -7,6 +7,7 @@ is released, manual modification needs to be made by updating
 format of the table has been changed.
 """
 
+import inspect
 import os
 import re
 import requests
@@ -15,7 +16,10 @@ from stat import S_IREAD, S_IRGRP, S_IROTH
 from astropy import constants, units
 import pandas as pd
 
-from skygp import PROJECT_DIR
+FILE_PATH = os.path.realpath(inspect.getsourcefile(lambda: 0))
+MODULE_DIR = os.path.dirname(FILE_PATH)
+PROJECT_DIR = os.path.realpath(os.path.join(MODULE_DIR, os.pardir))
+del FILE_PATH
 
 class DataManager:
     AME_URL = 'https://www-nds.iaea.org/amdc/ame2016/mass16.txt'

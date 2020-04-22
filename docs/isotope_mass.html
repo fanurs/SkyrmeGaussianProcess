@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>skygp.isotope_mass API documentation</title>
+<meta name="description" content="This module interacts with the atomic mass data …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML'></script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>skygp.isotope_mass</code></h1>
+</header>
+<section id="section-intro">
+<p>This module interacts with the atomic mass data.</p>
+<p>By the time of writing this module, the latest available data is
+Atomic Mass Evaluation in 2016 (AME2016). When future evaluation
+is released, manual modification needs to be made by updating
+<a title="skygp.isotope_mass.DataManager.AME_URL" href="#skygp.isotope_mass.DataManager.AME_URL"><code>DataManager.AME_URL</code></a> as well as <a title="skygp.isotope_mass.DataManager.read_in_data" href="#skygp.isotope_mass.DataManager.read_in_data"><code>DataManager.read_in_data()</code></a> if the
+format of the table has been changed.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;This module interacts with the atomic mass data.
+
+By the time of writing this module, the latest available data is
+Atomic Mass Evaluation in 2016 (AME2016). When future evaluation
+is released, manual modification needs to be made by updating
+`DataManager.AME_URL` as well as `DataManager.read_in_data` if the
+format of the table has been changed.
+&#34;&#34;&#34;
+
+import inspect
+import os
+import re
+import requests
+from stat import S_IREAD, S_IRGRP, S_IROTH
+
+from astropy import constants, units
+import pandas as pd
+
+FILE_PATH = os.path.realpath(inspect.getsourcefile(lambda: 0))
+MODULE_DIR = os.path.dirname(FILE_PATH)
+PROJECT_DIR = os.path.realpath(os.path.join(MODULE_DIR, os.pardir))
+del FILE_PATH
+
+class DataManager:
+    AME_URL = &#39;https://www-nds.iaea.org/amdc/ame2016/mass16.txt&#39;
+    AME_LOCAL_PATH = &#39;%s/database/mass16.txt&#39; % PROJECT_DIR
+
+    def __init__(self, force_download=False):
+        # download from web if local copy is not found
+        file_exists = os.path.isfile(self.AME_LOCAL_PATH)
+        if force_download or not file_exists:
+            if file_exists: os.remove(self.AME_LOCAL_PATH)
+            self.download()
+        self.read_in_data()
+
+    def download(self, filepath=None, url=None):
+        if filepath is None: filepath = self.AME_LOCAL_PATH
+        if url is None: url = self.AME_URL
+
+        with open(filepath, &#39;w&#39;) as f:
+            # to pretend as a web browser; for some reason, DataManager.AME_URL cannot be accessed otherwise
+            headers = {&#39;User-Agent&#39;: &#39;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36&#39;, \
+                       &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;, \
+                      }
+            content = requests.get(url, headers=headers).text
+            f.write(content)
+        
+        # set file to be read only for protection
+        os.chmod(filepath, S_IREAD | S_IRGRP | S_IROTH)
+
+    def read_in_data(self, filepath=None):
+        if filepath is None: filepath = self.AME_LOCAL_PATH
+
+        # check if file can be opened
+        try:
+            with open(filepath, &#39;r&#39;) as f:
+                content = f.readlines()
+        except IOError:
+            print(&#39;fail to read in %s&#39; % filepath)
+
+        # crop to select only the table data in content
+        first_line_of_data = -1
+        start_token = &#39;0&#39;
+        start_token_count = 0
+        for line_i, line in enumerate(content):
+            if line[0] == start_token:
+                start_token_count += 1
+            if start_token_count &gt;= 3:
+                first_line_of_data = line_i
+                break
+        content = content[line_i:]
+
+        content = self.auto_column_splitter(content)
+        
+        # A lot of HARD-CODED codes from now on. They are written
+        # according to the format of the table. The goal is to transform
+        # `content` into a `pandas.DataFrame` with appropriate format.
+
+        # construct `pandas.DataFrame` for columns of interest
+        column_dict = {3: &#39;Z&#39;, 4: &#39;A&#39;, 5: &#39;symb&#39;,
+                       7: &#39;mass_excess&#39;, 8: &#39;mass_excess_err&#39;}
+        content = [[row[i] for i in column_dict.keys()] for row in content]
+        df = pd.DataFrame(content, columns=column_dict.values())
+
+        # cast each column into appropriate variable type
+        df[&#39;Z&#39;] = df[&#39;Z&#39;].astype(int)
+        df[&#39;A&#39;] = df[&#39;A&#39;].astype(int)
+        df[&#39;symb&#39;] = df[&#39;symb&#39;].str.extract(r&#39;([A-Za-z]+)&#39;)
+        df[&#39;mass_excess&#39;] = df[&#39;mass_excess&#39;].str.extract(r&#39;([0-9.]+)&#39;).astype(float)
+        df[&#39;mass_excess_err&#39;] = df[&#39;mass_excess_err&#39;].str.extract(r&#39;([0-9.]+)&#39;).astype(float)
+
+        # construct mapping from `Z` to `symb`
+        Z_to_symb = dict(zip(df[&#39;Z&#39;], df[&#39;symb&#39;]))
+
+        # IUPAC announces official names for new elements in 2016
+        new_symb = {113: &#39;Nh&#39;, 115: &#39;Mc&#39;, 117: &#39;Ts&#39;, 118: &#39;Og&#39;}
+        old_to_new_symb = {Z_to_symb[k]: new_symb[k] for k in new_symb.keys()}
+        df.replace({&#39;symb&#39;: old_to_new_symb}, inplace=True)
+        for k, v in new_symb.items():
+            Z_to_symb[k] = v
+
+        # construct mapping from `symb` to `Z`
+        symb_to_Z = {v: k for k, v in Z_to_symb.items()}
+
+        # add to class attributes
+        df.set_index([&#39;A&#39;, &#39;Z&#39;], drop=False, inplace=True, verify_integrity=True)
+        self.df = df
+        self.units = {&#39;Z&#39;: None, &#39;A&#39;: None, &#39;symb&#39;: None,
+                      &#39;mass_excess&#39;: units.keV,
+                      &#39;mass_excess_err&#39;: units.keV}
+        self.Z_to_symb = Z_to_symb
+        self.symb_to_Z = symb_to_Z
+
+    @staticmethod
+    def auto_column_splitter(content):
+        min_line_length = min([len(line) for line in content])
+        split_pos = []
+        for c in range(1, min_line_length):
+            is_col_splitter = True
+            is_all_space = True
+            for line in content:
+                if line[c] != &#39; &#39;:
+                    is_all_space = False
+                if line[c] != &#39; &#39; and line[c-1] != &#39; &#39;:
+                    is_col_splitter = False
+                if not is_all_space and not is_col_splitter:
+                    break
+            if is_col_splitter and not is_all_space:
+                split_pos.append(c)
+        
+        splitted_content = []
+        split_pos = [0] + split_pos
+        for line in content:
+            line = line.strip(&#39;\n&#39;)
+            splitted_line = []
+            for c0, c1 in zip(split_pos[:-1], split_pos[1:]):
+                splitted_line.append(line[c0:c1])
+            splitted_line.append(line[c1:])
+            splitted_content.append(splitted_line)
+        
+        return splitted_content
+
+data_manager = DataManager()
+
+def get_A_Z(notation):
+    &#34;&#34;&#34;Converts mass-number annotated isotope expression into A and Z.
+
+    Examples:
+    ----------
+    &gt;&gt;&gt; get_A_Z(&#39;ca40&#39;)
+    (40, 20)
+    &#34;&#34;&#34;
+    global data_manager
+    symb_to_Z = data_manager.symb_to_Z
+
+    expected_regex = re.compile(r&#39;([A-Za-z][a-z]?\d{1,3}|\d{1,3}[A-Za-z][a-z]?)&#39;)
+    matches = expected_regex.findall(notation)
+    if (len(matches) != 1):
+        raise ValueError(&#39;notation &#34;%s&#34; has unexpected format&#39; % notation)
+    match = matches[0]
+    digit_part = &#39;&#39;.join(filter(str.isdigit, match))
+    alpha_part = &#39;&#39;.join(filter(str.isalpha, match))
+
+    A = int(digit_part)
+    symb = alpha_part.capitalize()
+    if symb not in symb_to_Z.keys():
+        raise ValueError(&#39;chemical symbol &#34;%s&#34; is unidentified&#39; % symb)
+    else:
+        Z = symb_to_Z[symb]
+
+    return A, Z
+
+def get_mass(argv, unit=units.MeV):
+    global data_manager
+    df = data_manager.df
+    df_units = data_manager.units
+
+    if isinstance(argv, str):
+        A, Z = get_A_Z(argv)
+    elif isinstance(argv, tuple) and len(argv) == 2:
+        A, Z = tuple
+
+    if (A, Z) not in df.index:
+        raise ValueError(&#39;&#34;(A, Z) = (%d, %d)&#34; not found&#39; % (A, Z))
+
+    amu = constants.u.to(units.MeV, units.mass_energy())
+    mass_excess = units.Quantity(df.loc[(A, Z)][&#39;mass_excess&#39;], df_units[&#39;mass_excess&#39;])
+    mass = A * amu + mass_excess
+    return mass.value</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="skygp.isotope_mass.get_A_Z"><code class="name flex">
+<span>def <span class="ident">get_A_Z</span></span>(<span>notation)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Converts mass-number annotated isotope expression into A and Z.</p>
+<h2 id="examples">Examples:</h2>
+<pre><code>&gt;&gt;&gt; get_A_Z('ca40')
+(40, 20)
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_A_Z(notation):
+    &#34;&#34;&#34;Converts mass-number annotated isotope expression into A and Z.
+
+    Examples:
+    ----------
+    &gt;&gt;&gt; get_A_Z(&#39;ca40&#39;)
+    (40, 20)
+    &#34;&#34;&#34;
+    global data_manager
+    symb_to_Z = data_manager.symb_to_Z
+
+    expected_regex = re.compile(r&#39;([A-Za-z][a-z]?\d{1,3}|\d{1,3}[A-Za-z][a-z]?)&#39;)
+    matches = expected_regex.findall(notation)
+    if (len(matches) != 1):
+        raise ValueError(&#39;notation &#34;%s&#34; has unexpected format&#39; % notation)
+    match = matches[0]
+    digit_part = &#39;&#39;.join(filter(str.isdigit, match))
+    alpha_part = &#39;&#39;.join(filter(str.isalpha, match))
+
+    A = int(digit_part)
+    symb = alpha_part.capitalize()
+    if symb not in symb_to_Z.keys():
+        raise ValueError(&#39;chemical symbol &#34;%s&#34; is unidentified&#39; % symb)
+    else:
+        Z = symb_to_Z[symb]
+
+    return A, Z</code></pre>
+</details>
+</dd>
+<dt id="skygp.isotope_mass.get_mass"><code class="name flex">
+<span>def <span class="ident">get_mass</span></span>(<span>argv, unit=Unit("MeV"))</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_mass(argv, unit=units.MeV):
+    global data_manager
+    df = data_manager.df
+    df_units = data_manager.units
+
+    if isinstance(argv, str):
+        A, Z = get_A_Z(argv)
+    elif isinstance(argv, tuple) and len(argv) == 2:
+        A, Z = tuple
+
+    if (A, Z) not in df.index:
+        raise ValueError(&#39;&#34;(A, Z) = (%d, %d)&#34; not found&#39; % (A, Z))
+
+    amu = constants.u.to(units.MeV, units.mass_energy())
+    mass_excess = units.Quantity(df.loc[(A, Z)][&#39;mass_excess&#39;], df_units[&#39;mass_excess&#39;])
+    mass = A * amu + mass_excess
+    return mass.value</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="skygp.isotope_mass.DataManager"><code class="flex name class">
+<span>class <span class="ident">DataManager</span></span>
+<span>(</span><span>force_download=False)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DataManager:
+    AME_URL = &#39;https://www-nds.iaea.org/amdc/ame2016/mass16.txt&#39;
+    AME_LOCAL_PATH = &#39;%s/database/mass16.txt&#39; % PROJECT_DIR
+
+    def __init__(self, force_download=False):
+        # download from web if local copy is not found
+        file_exists = os.path.isfile(self.AME_LOCAL_PATH)
+        if force_download or not file_exists:
+            if file_exists: os.remove(self.AME_LOCAL_PATH)
+            self.download()
+        self.read_in_data()
+
+    def download(self, filepath=None, url=None):
+        if filepath is None: filepath = self.AME_LOCAL_PATH
+        if url is None: url = self.AME_URL
+
+        with open(filepath, &#39;w&#39;) as f:
+            # to pretend as a web browser; for some reason, DataManager.AME_URL cannot be accessed otherwise
+            headers = {&#39;User-Agent&#39;: &#39;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36&#39;, \
+                       &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;, \
+                      }
+            content = requests.get(url, headers=headers).text
+            f.write(content)
+        
+        # set file to be read only for protection
+        os.chmod(filepath, S_IREAD | S_IRGRP | S_IROTH)
+
+    def read_in_data(self, filepath=None):
+        if filepath is None: filepath = self.AME_LOCAL_PATH
+
+        # check if file can be opened
+        try:
+            with open(filepath, &#39;r&#39;) as f:
+                content = f.readlines()
+        except IOError:
+            print(&#39;fail to read in %s&#39; % filepath)
+
+        # crop to select only the table data in content
+        first_line_of_data = -1
+        start_token = &#39;0&#39;
+        start_token_count = 0
+        for line_i, line in enumerate(content):
+            if line[0] == start_token:
+                start_token_count += 1
+            if start_token_count &gt;= 3:
+                first_line_of_data = line_i
+                break
+        content = content[line_i:]
+
+        content = self.auto_column_splitter(content)
+        
+        # A lot of HARD-CODED codes from now on. They are written
+        # according to the format of the table. The goal is to transform
+        # `content` into a `pandas.DataFrame` with appropriate format.
+
+        # construct `pandas.DataFrame` for columns of interest
+        column_dict = {3: &#39;Z&#39;, 4: &#39;A&#39;, 5: &#39;symb&#39;,
+                       7: &#39;mass_excess&#39;, 8: &#39;mass_excess_err&#39;}
+        content = [[row[i] for i in column_dict.keys()] for row in content]
+        df = pd.DataFrame(content, columns=column_dict.values())
+
+        # cast each column into appropriate variable type
+        df[&#39;Z&#39;] = df[&#39;Z&#39;].astype(int)
+        df[&#39;A&#39;] = df[&#39;A&#39;].astype(int)
+        df[&#39;symb&#39;] = df[&#39;symb&#39;].str.extract(r&#39;([A-Za-z]+)&#39;)
+        df[&#39;mass_excess&#39;] = df[&#39;mass_excess&#39;].str.extract(r&#39;([0-9.]+)&#39;).astype(float)
+        df[&#39;mass_excess_err&#39;] = df[&#39;mass_excess_err&#39;].str.extract(r&#39;([0-9.]+)&#39;).astype(float)
+
+        # construct mapping from `Z` to `symb`
+        Z_to_symb = dict(zip(df[&#39;Z&#39;], df[&#39;symb&#39;]))
+
+        # IUPAC announces official names for new elements in 2016
+        new_symb = {113: &#39;Nh&#39;, 115: &#39;Mc&#39;, 117: &#39;Ts&#39;, 118: &#39;Og&#39;}
+        old_to_new_symb = {Z_to_symb[k]: new_symb[k] for k in new_symb.keys()}
+        df.replace({&#39;symb&#39;: old_to_new_symb}, inplace=True)
+        for k, v in new_symb.items():
+            Z_to_symb[k] = v
+
+        # construct mapping from `symb` to `Z`
+        symb_to_Z = {v: k for k, v in Z_to_symb.items()}
+
+        # add to class attributes
+        df.set_index([&#39;A&#39;, &#39;Z&#39;], drop=False, inplace=True, verify_integrity=True)
+        self.df = df
+        self.units = {&#39;Z&#39;: None, &#39;A&#39;: None, &#39;symb&#39;: None,
+                      &#39;mass_excess&#39;: units.keV,
+                      &#39;mass_excess_err&#39;: units.keV}
+        self.Z_to_symb = Z_to_symb
+        self.symb_to_Z = symb_to_Z
+
+    @staticmethod
+    def auto_column_splitter(content):
+        min_line_length = min([len(line) for line in content])
+        split_pos = []
+        for c in range(1, min_line_length):
+            is_col_splitter = True
+            is_all_space = True
+            for line in content:
+                if line[c] != &#39; &#39;:
+                    is_all_space = False
+                if line[c] != &#39; &#39; and line[c-1] != &#39; &#39;:
+                    is_col_splitter = False
+                if not is_all_space and not is_col_splitter:
+                    break
+            if is_col_splitter and not is_all_space:
+                split_pos.append(c)
+        
+        splitted_content = []
+        split_pos = [0] + split_pos
+        for line in content:
+            line = line.strip(&#39;\n&#39;)
+            splitted_line = []
+            for c0, c1 in zip(split_pos[:-1], split_pos[1:]):
+                splitted_line.append(line[c0:c1])
+            splitted_line.append(line[c1:])
+            splitted_content.append(splitted_line)
+        
+        return splitted_content</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="skygp.isotope_mass.DataManager.AME_LOCAL_PATH"><code class="name">var <span class="ident">AME_LOCAL_PATH</span></code></dt>
+<dd>
+<section class="desc"><p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.</p></section>
+</dd>
+<dt id="skygp.isotope_mass.DataManager.AME_URL"><code class="name">var <span class="ident">AME_URL</span></code></dt>
+<dd>
+<section class="desc"><p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.</p></section>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="skygp.isotope_mass.DataManager.auto_column_splitter"><code class="name flex">
+<span>def <span class="ident">auto_column_splitter</span></span>(<span>content)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def auto_column_splitter(content):
+    min_line_length = min([len(line) for line in content])
+    split_pos = []
+    for c in range(1, min_line_length):
+        is_col_splitter = True
+        is_all_space = True
+        for line in content:
+            if line[c] != &#39; &#39;:
+                is_all_space = False
+            if line[c] != &#39; &#39; and line[c-1] != &#39; &#39;:
+                is_col_splitter = False
+            if not is_all_space and not is_col_splitter:
+                break
+        if is_col_splitter and not is_all_space:
+            split_pos.append(c)
+    
+    splitted_content = []
+    split_pos = [0] + split_pos
+    for line in content:
+        line = line.strip(&#39;\n&#39;)
+        splitted_line = []
+        for c0, c1 in zip(split_pos[:-1], split_pos[1:]):
+            splitted_line.append(line[c0:c1])
+        splitted_line.append(line[c1:])
+        splitted_content.append(splitted_line)
+    
+    return splitted_content</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="skygp.isotope_mass.DataManager.download"><code class="name flex">
+<span>def <span class="ident">download</span></span>(<span>self, filepath=None, url=None)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def download(self, filepath=None, url=None):
+    if filepath is None: filepath = self.AME_LOCAL_PATH
+    if url is None: url = self.AME_URL
+
+    with open(filepath, &#39;w&#39;) as f:
+        # to pretend as a web browser; for some reason, DataManager.AME_URL cannot be accessed otherwise
+        headers = {&#39;User-Agent&#39;: &#39;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36&#39;, \
+                   &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;, \
+                  }
+        content = requests.get(url, headers=headers).text
+        f.write(content)
+    
+    # set file to be read only for protection
+    os.chmod(filepath, S_IREAD | S_IRGRP | S_IROTH)</code></pre>
+</details>
+</dd>
+<dt id="skygp.isotope_mass.DataManager.read_in_data"><code class="name flex">
+<span>def <span class="ident">read_in_data</span></span>(<span>self, filepath=None)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_in_data(self, filepath=None):
+    if filepath is None: filepath = self.AME_LOCAL_PATH
+
+    # check if file can be opened
+    try:
+        with open(filepath, &#39;r&#39;) as f:
+            content = f.readlines()
+    except IOError:
+        print(&#39;fail to read in %s&#39; % filepath)
+
+    # crop to select only the table data in content
+    first_line_of_data = -1
+    start_token = &#39;0&#39;
+    start_token_count = 0
+    for line_i, line in enumerate(content):
+        if line[0] == start_token:
+            start_token_count += 1
+        if start_token_count &gt;= 3:
+            first_line_of_data = line_i
+            break
+    content = content[line_i:]
+
+    content = self.auto_column_splitter(content)
+    
+    # A lot of HARD-CODED codes from now on. They are written
+    # according to the format of the table. The goal is to transform
+    # `content` into a `pandas.DataFrame` with appropriate format.
+
+    # construct `pandas.DataFrame` for columns of interest
+    column_dict = {3: &#39;Z&#39;, 4: &#39;A&#39;, 5: &#39;symb&#39;,
+                   7: &#39;mass_excess&#39;, 8: &#39;mass_excess_err&#39;}
+    content = [[row[i] for i in column_dict.keys()] for row in content]
+    df = pd.DataFrame(content, columns=column_dict.values())
+
+    # cast each column into appropriate variable type
+    df[&#39;Z&#39;] = df[&#39;Z&#39;].astype(int)
+    df[&#39;A&#39;] = df[&#39;A&#39;].astype(int)
+    df[&#39;symb&#39;] = df[&#39;symb&#39;].str.extract(r&#39;([A-Za-z]+)&#39;)
+    df[&#39;mass_excess&#39;] = df[&#39;mass_excess&#39;].str.extract(r&#39;([0-9.]+)&#39;).astype(float)
+    df[&#39;mass_excess_err&#39;] = df[&#39;mass_excess_err&#39;].str.extract(r&#39;([0-9.]+)&#39;).astype(float)
+
+    # construct mapping from `Z` to `symb`
+    Z_to_symb = dict(zip(df[&#39;Z&#39;], df[&#39;symb&#39;]))
+
+    # IUPAC announces official names for new elements in 2016
+    new_symb = {113: &#39;Nh&#39;, 115: &#39;Mc&#39;, 117: &#39;Ts&#39;, 118: &#39;Og&#39;}
+    old_to_new_symb = {Z_to_symb[k]: new_symb[k] for k in new_symb.keys()}
+    df.replace({&#39;symb&#39;: old_to_new_symb}, inplace=True)
+    for k, v in new_symb.items():
+        Z_to_symb[k] = v
+
+    # construct mapping from `symb` to `Z`
+    symb_to_Z = {v: k for k, v in Z_to_symb.items()}
+
+    # add to class attributes
+    df.set_index([&#39;A&#39;, &#39;Z&#39;], drop=False, inplace=True, verify_integrity=True)
+    self.df = df
+    self.units = {&#39;Z&#39;: None, &#39;A&#39;: None, &#39;symb&#39;: None,
+                  &#39;mass_excess&#39;: units.keV,
+                  &#39;mass_excess_err&#39;: units.keV}
+    self.Z_to_symb = Z_to_symb
+    self.symb_to_Z = symb_to_Z</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="skygp" href="index.html">skygp</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="skygp.isotope_mass.get_A_Z" href="#skygp.isotope_mass.get_A_Z">get_A_Z</a></code></li>
+<li><code><a title="skygp.isotope_mass.get_mass" href="#skygp.isotope_mass.get_mass">get_mass</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="skygp.isotope_mass.DataManager" href="#skygp.isotope_mass.DataManager">DataManager</a></code></h4>
+<ul class="">
+<li><code><a title="skygp.isotope_mass.DataManager.AME_LOCAL_PATH" href="#skygp.isotope_mass.DataManager.AME_LOCAL_PATH">AME_LOCAL_PATH</a></code></li>
+<li><code><a title="skygp.isotope_mass.DataManager.AME_URL" href="#skygp.isotope_mass.DataManager.AME_URL">AME_URL</a></code></li>
+<li><code><a title="skygp.isotope_mass.DataManager.auto_column_splitter" href="#skygp.isotope_mass.DataManager.auto_column_splitter">auto_column_splitter</a></code></li>
+<li><code><a title="skygp.isotope_mass.DataManager.download" href="#skygp.isotope_mass.DataManager.download">download</a></code></li>
+<li><code><a title="skygp.isotope_mass.DataManager.read_in_data" href="#skygp.isotope_mass.DataManager.read_in_data">read_in_data</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

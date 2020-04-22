@@ -37,6 +37,13 @@ The studies of nuclear physics are typically categorized into two approaches. Th
 - Windows: Not available yet. E.g. path names will be incompatible.
 
 """
+import os
+import inspect
+FILE_PATH = os.path.realpath(inspect.getsourcefile(lambda: 0))
+MODULE_DIR = os.path.dirname(FILE_PATH)
+PROJECT_DIR = os.path.realpath(os.path.join(MODULE_DIR, os.pardir))
+del FILE_PATH # prevent variable contamination
+
 from .data_manager import *
 from .gaussian_emulator import *
 from .isotope_mass import *

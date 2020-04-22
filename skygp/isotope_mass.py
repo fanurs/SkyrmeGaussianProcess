@@ -15,7 +15,7 @@ from stat import S_IREAD, S_IRGRP, S_IROTH
 from astropy import constants, units
 import pandas as pd
 
-from nuclpy import PROJECT_DIR
+from skygp import PROJECT_DIR
 
 class DataManager:
     AME_URL = 'https://www-nds.iaea.org/amdc/ame2016/mass16.txt'

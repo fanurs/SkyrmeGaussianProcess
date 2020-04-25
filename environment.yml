@@ -3,6 +3,7 @@ channels:
 dependencies:
    - pytest
    - pdoc3
+   - requests
    - numpy
    - scipy
    - pandas

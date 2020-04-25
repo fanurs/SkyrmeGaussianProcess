@@ -66,7 +66,10 @@ class DataManager:
 
     &#34;&#34;&#34;
     AME_URL = &#39;https://www-nds.iaea.org/amdc/ame2016/mass16.txt&#39;
+    &#34;&#34;&#34;Link to the latest AME data sheet. See: https://www-nds.iaea.org/amdc/ame2016/mass16.txt&#34;&#34;&#34;
+
     AME_LOCAL_PATH = &#39;%s/database/mass16.txt&#39; % PROJECT_DIR
+    &#34;&#34;&#34;By default is set at `$PROJECT_DIR/database/mass16.txt`&#34;&#34;&#34;
 
     def __init__(self, force_download=False):
         &#34;&#34;&#34;This creates a `DataManager` object.
@@ -209,7 +212,7 @@ class DataManager:
     @staticmethod
     def auto_column_splitter(content):
         &#34;&#34;&#34;This function automatically separates the columns of `.txt` table.
-
+        
         This function can separate the columns of `.txt` tables that use space
         characters as their delimiters.
 
@@ -218,7 +221,7 @@ class DataManager:
                 A list of strings that correspond to the content of a `.txt` table.
                 Each element in the list, which is a string, corresponds to each row
                 of the table. These strings can be either ended with the newline
-                character `\n` or not. The row of column names or headers should not
+                character or not. The row of column names or headers should not
                 be included.
 
         Returns:
@@ -435,7 +438,10 @@ Default is <code>False</code>.</dd>
 
     &#34;&#34;&#34;
     AME_URL = &#39;https://www-nds.iaea.org/amdc/ame2016/mass16.txt&#39;
+    &#34;&#34;&#34;Link to the latest AME data sheet. See: https://www-nds.iaea.org/amdc/ame2016/mass16.txt&#34;&#34;&#34;
+
     AME_LOCAL_PATH = &#39;%s/database/mass16.txt&#39; % PROJECT_DIR
+    &#34;&#34;&#34;By default is set at `$PROJECT_DIR/database/mass16.txt`&#34;&#34;&#34;
 
     def __init__(self, force_download=False):
         &#34;&#34;&#34;This creates a `DataManager` object.
@@ -578,7 +584,7 @@ Default is <code>False</code>.</dd>
     @staticmethod
     def auto_column_splitter(content):
         &#34;&#34;&#34;This function automatically separates the columns of `.txt` table.
-
+        
         This function can separate the columns of `.txt` tables that use space
         characters as their delimiters.
 
@@ -587,7 +593,7 @@ Default is <code>False</code>.</dd>
                 A list of strings that correspond to the content of a `.txt` table.
                 Each element in the list, which is a string, corresponds to each row
                 of the table. These strings can be either ended with the newline
-                character `\n` or not. The row of column names or headers should not
+                character or not. The row of column names or headers should not
                 be included.
 
         Returns:
@@ -633,27 +639,11 @@ Default is <code>False</code>.</dd>
 <dl>
 <dt id="skygp.isotope_mass.DataManager.AME_LOCAL_PATH"><code class="name">var <span class="ident">AME_LOCAL_PATH</span></code></dt>
 <dd>
-<section class="desc"><p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.</p></section>
+<section class="desc"><p>By default is set at <code>$PROJECT_DIR/database/mass16.txt</code></p></section>
 </dd>
 <dt id="skygp.isotope_mass.DataManager.AME_URL"><code class="name">var <span class="ident">AME_URL</span></code></dt>
 <dd>
-<section class="desc"><p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.</p></section>
+<section class="desc"><p>Link to the latest AME data sheet. See: <a href="https://www-nds.iaea.org/amdc/ame2016/mass16.txt">https://www-nds.iaea.org/amdc/ame2016/mass16.txt</a></p></section>
 </dd>
 </dl>
 <h3>Static methods</h3>
@@ -663,28 +653,28 @@ errors defaults to 'strict'.</p></section>
 </code></dt>
 <dd>
 <section class="desc"><p>This function automatically separates the columns of <code>.txt</code> table.</p>
-<pre><code>    This function can separate the columns of `.txt` tables that use space
-    characters as their delimiters.
-
-    Parameters:
-        content : list of str
-            A list of strings that correspond to the content of a `.txt` table.
-            Each element in the list, which is a string, corresponds to each row
-            of the table. These strings can be either ended with the newline
-            character `
-</code></pre>
-<p>` or not. The row of column names or headers should not
-be included.</p>
-<pre><code>    Returns:
-        splitted_content : a two-dimensional list of str
-
-    Examples:
-    ----------
-    &gt;&gt;&gt; from isotope_mass import DataManager
-    &gt;&gt;&gt; dm = DataManager()
-    &gt;&gt;&gt; content = ["Amy  168.5cm", "Bob  181.9cm", "Cici 157.3cm"]
-    &gt;&gt;&gt; dm.auto_column_splitter(content)
-    [['Amy  ', '168.5cm'], ['Bob  ', '181.9cm'], ['Cici ', '157.3cm']]
+<p>This function can separate the columns of <code>.txt</code> tables that use space
+characters as their delimiters.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>content</code></strong> :&ensp;<code>list</code> of <code>str</code></dt>
+<dd>A list of strings that correspond to the content of a <code>.txt</code> table.
+Each element in the list, which is a string, corresponds to each row
+of the table. These strings can be either ended with the newline
+character or not. The row of column names or headers should not
+be included.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>splitted_content</code></strong> :&ensp;<code>a</code> <code>two</code>-<code>dimensional</code> <code>list</code> of <code>str</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="examples">Examples:</h2>
+<pre><code>&gt;&gt;&gt; from isotope_mass import DataManager
+&gt;&gt;&gt; dm = DataManager()
+&gt;&gt;&gt; content = ["Amy  168.5cm", "Bob  181.9cm", "Cici 157.3cm"]
+&gt;&gt;&gt; dm.auto_column_splitter(content)
+[['Amy  ', '168.5cm'], ['Bob  ', '181.9cm'], ['Cici ', '157.3cm']]
 </code></pre></section>
 <details class="source">
 <summary>
@@ -693,7 +683,7 @@ be included.</p>
 <pre><code class="python">@staticmethod
 def auto_column_splitter(content):
     &#34;&#34;&#34;This function automatically separates the columns of `.txt` table.
-
+    
     This function can separate the columns of `.txt` tables that use space
     characters as their delimiters.
 
@@ -702,7 +692,7 @@ def auto_column_splitter(content):
             A list of strings that correspond to the content of a `.txt` table.
             Each element in the list, which is a string, corresponds to each row
             of the table. These strings can be either ended with the newline
-            character `\n` or not. The row of column names or headers should not
+            character or not. The row of column names or headers should not
             be included.
 
     Returns:

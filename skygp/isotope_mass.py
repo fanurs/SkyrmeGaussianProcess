@@ -33,7 +33,10 @@ class DataManager:
 
     """
     AME_URL = 'https://www-nds.iaea.org/amdc/ame2016/mass16.txt'
+    """Link to the latest AME data sheet. See: https://www-nds.iaea.org/amdc/ame2016/mass16.txt"""
+
     AME_LOCAL_PATH = '%s/database/mass16.txt' % PROJECT_DIR
+    """By default is set at `$PROJECT_DIR/database/mass16.txt`"""
 
     def __init__(self, force_download=False):
         """This creates a `DataManager` object.
@@ -176,7 +179,7 @@ class DataManager:
     @staticmethod
     def auto_column_splitter(content):
         """This function automatically separates the columns of `.txt` table.
-
+        
         This function can separate the columns of `.txt` tables that use space
         characters as their delimiters.
 
@@ -185,7 +188,7 @@ class DataManager:
                 A list of strings that correspond to the content of a `.txt` table.
                 Each element in the list, which is a string, corresponds to each row
                 of the table. These strings can be either ended with the newline
-                character `\n` or not. The row of column names or headers should not
+                character or not. The row of column names or headers should not
                 be included.
 
         Returns:

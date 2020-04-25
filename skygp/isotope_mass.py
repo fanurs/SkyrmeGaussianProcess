@@ -16,16 +16,41 @@ from stat import S_IREAD, S_IRGRP, S_IROTH
 from astropy import constants, units
 import pandas as pd
 
+# identifies the project directory (`SkyrmeGaussianProcess/`)
+# and module directory (`SkyrmeGaussianProcess/skygp/`)
 FILE_PATH = os.path.realpath(inspect.getsourcefile(lambda: 0))
 MODULE_DIR = os.path.dirname(FILE_PATH)
 PROJECT_DIR = os.path.realpath(os.path.join(MODULE_DIR, os.pardir))
-del FILE_PATH
+del FILE_PATH # to avoid variable name contamination
 
 class DataManager:
+    """A class to interacts with the atomic masses.
+
+    Many kinematic calculations require the knowledge of masses of atomic
+    isotopes. This class allows user to automatically download the data
+    sheet of Atomic Mass Evaluation to local machine, and perform some
+    simple query tasks on the table.
+
+    """
     AME_URL = 'https://www-nds.iaea.org/amdc/ame2016/mass16.txt'
     AME_LOCAL_PATH = '%s/database/mass16.txt' % PROJECT_DIR
 
     def __init__(self, force_download=False):
+        """This creates a `DataManager` object.
+
+        A local copy has to be present before any query task can be made.
+        Hence this initializer downloads the data if local copy is not
+        present yet, or the user has decided to turn on the `force_download`
+        option.
+
+        Parameters:
+            force_download : bool *optional*
+                If `True`, a new local copy will always be downloaded from
+                the website (see class variable `AME_URL`). If `False`, the
+                program only downloads the data when no local copy is found.
+                Default is `False`.
+
+        """
         # download from web if local copy is not found
         file_exists = os.path.isfile(self.AME_LOCAL_PATH)
         if force_download or not file_exists:
@@ -33,7 +58,25 @@ class DataManager:
             self.download()
         self.read_in_data()
 
+        # other class attributes to be updated
+        self.df = None # a `pandas.DataFrame for storing AME data
+        self.units = None # units for every column in self.df
+        self.Z_to_symb = None
+        self.symb_to_Z = None
+
     def download(self, filepath=None, url=None):
+        """Download AME data from the web.
+
+        Parameters:
+            filepath : str *optional*
+                The local filepath that store the downloaded data. Default is
+                `None`, which will then be set into class variable `AME_LOCAL_PATH`.
+
+            url : str *optional*
+                The url to the AME data. Default is `None`, which will then be
+                set into class variable `AME_URL`.
+
+        """
         if filepath is None: filepath = self.AME_LOCAL_PATH
         if url is None: url = self.AME_URL
 
@@ -49,6 +92,25 @@ class DataManager:
         os.chmod(filepath, S_IREAD | S_IRGRP | S_IROTH)
 
     def read_in_data(self, filepath=None):
+        """Updates class attribute `self.df` into formatted AME data.
+
+        This function only reads from a local copy of AME data. Make sure the data
+        has been downloaded from the web. Not all columns from AME data will be kept.
+        The columns that will be returned are `Z`, `A`, `symb`, `mass_excess` and
+        `mass_excess_err`. Other columns including isospin, binding energy (and its
+        error) and mass in a.m.u (and its error) are discarded as they can all be
+        calculated directly from mass excess.
+
+        No unit conversion has been made. The AME provides mass excess in $\mathrm{keV/c^2}$.
+        Nonetheless, units have been stored as class attribute `self.units` as python
+        dictionary using `astropy.units`.
+
+        Parameters:
+            filepath : str *optional*
+                The local filepath that store the downloaded data. Default is
+                `None`, which will then be set into class variable `AME_LOCAL_PATH`.
+
+        """
         if filepath is None: filepath = self.AME_LOCAL_PATH
 
         # check if file can be opened
@@ -102,7 +164,7 @@ class DataManager:
         # construct mapping from `symb` to `Z`
         symb_to_Z = {v: k for k, v in Z_to_symb.items()}
 
-        # add to class attributes
+        # update to class attributes
         df.set_index(['A', 'Z'], drop=False, inplace=True, verify_integrity=True)
         self.df = df
         self.units = {'Z': None, 'A': None, 'symb': None,
@@ -113,6 +175,31 @@ class DataManager:
 
     @staticmethod
     def auto_column_splitter(content):
+        """This function automatically separates the columns of `.txt` table.
+
+        This function can separate the columns of `.txt` tables that use space
+        characters as their delimiters.
+
+        Parameters:
+            content : list of str
+                A list of strings that correspond to the content of a `.txt` table.
+                Each element in the list, which is a string, corresponds to each row
+                of the table. These strings can be either ended with the newline
+                character `\n` or not. The row of column names or headers should not
+                be included.
+
+        Returns:
+            splitted_content : a two-dimensional list of str
+
+        Examples:
+        ----------
+        >>> from isotope_mass import DataManager
+        >>> dm = DataManager()
+        >>> content = ["Amy  168.5cm", "Bob  181.9cm", "Cici 157.3cm"]
+        >>> dm.auto_column_splitter(content)
+        [['Amy  ', '168.5cm'], ['Bob  ', '181.9cm'], ['Cici ', '157.3cm']]
+
+        """
         min_line_length = min([len(line) for line in content])
         split_pos = []
         for c in range(1, min_line_length):
@@ -147,7 +234,8 @@ def get_A_Z(notation):
 
     Examples:
     ----------
-    >>> get_A_Z('ca40')
+    >>> import isotope_mass as isom
+    >>> isom.get_A_Z('ca40')
     (40, 20)
     """
     global data_manager
@@ -171,6 +259,8 @@ def get_A_Z(notation):
     return A, Z
 
 def get_mass(argv, unit=units.MeV):
+    """Get mass of isotope.
+    """
     global data_manager
     df = data_manager.df
     df_units = data_manager.units
